@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage[style=authoryear, backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\title{Do Leaders Export Pollution While Importing Wealth?}
+\author{Richard Schulz \\ \small Supervisor: Joshua Blumenstock (UC Berkeley)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+Standard political economy literature \parencite[e.g.,][]{HodlerRaschky2014} has robustly established that leaders direct economic resources to their birth regions, a phenomenon visible via satellite nightlights. However, this narrative overlooks the environmental cost of such development. Our project proposes a novel dimension: \textbf{``Green Favoritism.''}
+
+We hypothesize that sophisticated autocrats practice a ``Not In My Backyard'' (NIMBY) strategy: directing high-value, low-pollution sectors (tech, services) to their birth regions while relegating dirty heavy industry to peripheral or rival regions. We will test if leader birthplaces exhibit a ``decoupling'' effect: rising wealth (nightlights) without a corresponding spike in industrial pollution ($NO_2$). A finding that leader birthplaces have a significantly lower ``pollution elasticity of growth'' would provide the first empirical evidence of inequality in the quality of development, not just the quantity.
+
+\section*{Datasets \& Methodology}
+
+To isolate the causal impact of political power on environmental quality, we will employ a Difference-in-Differences (DiD) framework with high-dimensional fixed effects. This design compares the trajectory of a leader's birth district against all other districts within the same country, before and after their ascension to power.
+
+\begin{itemize}
+    \item \textbf{Political Data:} \textit{Archigos 4.1 Database} (Leaders of the World) \parencite{Goemans2009Archigos}. \\
+    \textit{Note:} We will extend the \textcite{HodlerRaschky2014} geocoding methodology to include leaders active post-2010.
+    
+    \item \textbf{Industrial Pollution ($NO_2$):} \textit{OMI (Ozone Monitoring Instrument)} via Google Earth Engine (2004--Present) \parencite{Levelt2006OMI}. \\
+    \textit{Variable:} Tropospheric $NO_2$ Column Density (2004--Present). This proxy captures heavy industry and transport emissions.
+    
+    \item \textbf{Economic Activity:} \textit{DMSP-OLS} (1992--2013) and \textit{VIIRS} (2012--Present) \parencite{Elvidge2013VIIRS}.
+\end{itemize}
+
+\printbibliography
+
+\end{document}
