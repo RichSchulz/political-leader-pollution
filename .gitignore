@@ -10,4 +10,5 @@
 *.out
 .DS_Store
 !proposal/main.pdf
-data/nightlights/
+data/nightlights/*
+!data/nightlights/.gitkeep
