@@ -12,3 +12,7 @@
 !proposal/main.pdf
 data/nightlights/*
 !data/nightlights/.gitkeep
+data/gadm/*.gpkg
+data/gadm/*.zip
+data/vdem/*.csv
+venv/
