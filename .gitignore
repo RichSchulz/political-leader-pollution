@@ -16,3 +16,8 @@ data/gadm/*.gpkg
 data/gadm/*.zip
 data/vdem/*.csv
 venv/
+scripts/__pycache__/
+data/acag_no2_raw/
+data/acag_no2_parts/
+data/no2_adm2_acag_panel.parquet
+data/nightlights_adm2_green_favoritism_panel.parquet

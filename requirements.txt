@@ -5,3 +5,5 @@ rasterio
 rasterstats
 linearmodels
 pyarrow
+earthengine-api
+requests
