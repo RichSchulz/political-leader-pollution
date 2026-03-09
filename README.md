@@ -75,11 +75,3 @@ Current estimates on the 2005-2019 ACAG window do not show the expected Green Fa
 - Democracy interaction: no statistically meaningful interaction effects in this restricted window.
 
 For reference, the replication-style long DMSP sample (1992-2013) still shows a positive nightlights favoritism coefficient (about 0.0128, p=0.030), but this fades in the restricted 2005+ sample.
-
-## Sharing With Teammates
-
-Do not commit generated large data artifacts to git. Share these externally (Drive/Dropbox/OneDrive), or have teammates regenerate them:
-
-- `data/no2_adm2_acag_panel.parquet`
-- `data/nightlights_adm2_green_favoritism_panel.parquet`
-- `data/acag_no2_parts/` and `data/acag_no2_raw/` (optional checkpoints/raw downloads)
