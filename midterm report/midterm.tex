@@ -1,0 +1,293 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{setspace}
+\pgfplotsset{compat=1.18}
+
+\title{\textbf{Do Leaders Export Pollution While Importing Wealth?}\\[0.35em]
+\large Midterm Report}
+\author{Richard Schulz \and Ruby Wang \and Muhammad Altaf}
+\date{\today}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+This project studies whether political leaders direct cleaner growth to their birth regions while shifting pollution-intensive activity elsewhere. We combine PLAD birth-region information, harmonized nighttime lights, ACAG surface NO$_2$, V-Dem democracy scores, and GADM ADM2 boundaries to build a global district-year panel for 2005--2019. The current data pipeline is fully reproducible and now runs locally without Google Earth Engine for the pollution outcome. Preliminary results replicate the classic regional favoritism result in the long 1992--2013 nightlights sample, but the birth-region nightlights effect disappears in the restricted 2005--2019 window required by the ACAG NO$_2$ data. In that restricted sample, we do not find evidence of ``green favoritism'': pooled NO$_2$ estimates are weakly positive at lag 0, pollution intensity is also weakly positive, and democracy interactions do not recover a clean autocracy first stage. The main empirical issue for the second half of the project is therefore not data access but interpretation: the original favoritism result is hard to reproduce in the later sample window.
+\end{abstract}
+
+\section*{1. Project Status and Research Question}
+Our research question is whether leaders channel cleaner forms of economic development to their own birth regions while leaving dirtier activity to politically peripheral districts. The intended empirical signature is a positive treatment effect on nighttime lights combined with a zero or negative treatment effect on pollution. The midterm milestone focused on building a proposal-aligned 2005--2019 panel using ACAG NO$_2$ data, harmonized nightlights, and PLAD treatment coding at ADM2 level.
+
+The main progress since the proposal is that the data pipeline is now working end-to-end. The key empirical issue is now substantive rather than technical: the classic birth-region favoritism effect in nightlights is present in the long historical sample, but it largely disappears in the later 2005--2019 panel.
+
+\section*{2. Annotated Bibliography}
+\begin{enumerate}[leftmargin=*, itemsep=0.5em]
+    \item \textbf{Hodler and Raschky (2014), ``Regional Favoritism.''} This is the foundational paper for the project. It shows that national leaders direct more economic activity, proxied by nightlights, to their birth regions; our design is a direct environmental extension of this logic.
+
+    \item \textbf{Bora (2025), ``Birthplace Favoritism Revisited.''} Bora provides the most relevant modern replication benchmark for the lights specification, revisiting the original 1992--2013 DMSP-era sample and extending the analysis with more recent satellite evidence and crisis-period heterogeneity. This paper matters because it helps benchmark whether our replication choices are close to the current literature.
+
+    \item \textbf{Bomprezzi et al. (2025), PLAD.} PLAD provides leader birth-region identifiers at subnational level and makes a global ADM2 treatment design feasible. It is the core political dataset used to define treated birth districts and leader spells.
+
+    \item \textbf{Bomprezzi et al. (2024), ``Wedded to Prosperity?''} This paper broadens the favoritism literature by showing that politically connected personal ties also shape subnational resource allocation. It is useful because it supports the broader idea that informal favoritism can operate through geography and personal networks.
+
+    \item \textbf{Cooper et al. (2022), global fine-scale ambient NO$_2$.} This paper underlies the ACAG NO$_2$ product we now use. It is important because it delivers annual fine-resolution surface NO$_2$ estimates that are much better suited to an ADM2 panel than coarser satellite-only products.
+
+    \item \textbf{Elvidge et al. (2013), ``Why VIIRS data are superior to DMSP.''} This paper is the key reference for the nightlights side of the project. It explains the DMSP--VIIRS sensor transition and why harmonization matters for any panel that spans both systems.
+
+    \item \textbf{Copeland and Taylor (2004), ``Trade, Growth, and the Environment.''} This is not a favoritism paper, but it provides the environmental-economics intuition behind our project. We adapt the pollution-haven logic from cross-border settings to within-country political geography.
+\end{enumerate}
+
+\section*{3. Datasets and Descriptive Analysis}
+Table~\ref{tab:data-summary} summarizes the main datasets currently in use. Table~\ref{tab:var-summary} reports descriptive statistics from the 2005--2019 merged analysis panel.
+
+\begin{table}[h]
+\centering
+\caption{Dataset summary}
+\label{tab:data-summary}
+\small
+\begin{tabular}{p{3.2cm}p{2.0cm}p{2.0cm}p{4.9cm}}
+\toprule
+Dataset & Coverage & Unit & Current use \\
+\midrule
+PLAD & 148 countries in analysis window & Leader-year / birth district & Birth-region treatment and leader spell construction \\
+Nightlights & 2005--2019 & ADM2-year & Harmonized DMSP (2005--2013) and simVIIRS (2014--2019) \\
+ACAG surface NO$_2$ & 2005--2019 & ADM2-year & Main pollution outcome; built from reproducible local pipeline \\
+V-Dem polyarchy & 2005--2019 & Country-year & Democracy interaction and autocracy subsamples \\
+GADM v4.1 & Static & ADM2 polygon & Common spatial aggregation unit \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Summary statistics: merged 2005--2019 panel}
+\label{tab:var-summary}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Variable & Mean & Std. Dev. & Median & Notes \\
+\midrule
+Nightlights mean & 14.789 & 12.938 & 9.904 & Harmonized DN \\
+NO$_2$ mean & 0.959 & 2.015 & 0.269 & ACAG surface NO$_2$ \\
+$\ln(\text{Nightlights}+0.01)$ & 2.441 & 0.658 & -- & Main output proxy \\
+$\ln(\text{NO}_2+0.01)$ & -1.281 & 1.660 & -- & Main pollution proxy \\
+Pollution intensity & -3.722 & 1.790 & -- & $\ln(\text{NO}_2+0.01)-\ln(\text{lights}+0.01)$ \\
+Treatment indicator & 0.0024 & -- & 0 & Share of treated observations \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\begin{minipage}{0.48\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=\textwidth,
+    height=5.2cm,
+    title={Mean log nightlights},
+    xlabel={Year},
+    ylabel={Mean},
+    xmin=2004.5, xmax=2019.5,
+    ymin=2.2, ymax=3.2,
+    xtick={2005,2007,2009,2011,2013,2015,2017,2019},
+    xticklabel style={rotate=45, anchor=east, font=\scriptsize},
+    legend pos=north west,
+    grid=major,
+]
+\addplot[blue, thick, mark=*] coordinates {
+(2005,2.248673) (2006,2.260595) (2007,2.278964) (2008,2.265369) (2009,2.449517)
+(2010,2.266356) (2011,2.320779) (2012,2.475933) (2013,2.442404) (2014,2.589948)
+(2015,2.587250) (2016,2.613203) (2017,2.551330) (2018,2.593009) (2019,2.639756)};
+\addlegendentry{Control}
+\addplot[red, thick, dashed, mark=square*] coordinates {
+(2005,2.829280) (2006,2.802476) (2007,2.781867) (2008,2.815536) (2009,2.944598)
+(2010,2.839817) (2011,2.829081) (2012,2.960400) (2013,2.995746) (2014,3.098433)
+(2015,3.140525) (2016,3.156481) (2017,3.044752) (2018,3.112202) (2019,3.156147)};
+\addlegendentry{Treated}
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=\textwidth,
+    height=5.2cm,
+    title={Mean pollution intensity},
+    xlabel={Year},
+    ylabel={Mean},
+    xmin=2004.5, xmax=2019.5,
+    ymin=-5.2, ymax=-3.3,
+    xtick={2005,2007,2009,2011,2013,2015,2017,2019},
+    xticklabel style={rotate=45, anchor=east, font=\scriptsize},
+    legend pos=south west,
+    grid=major,
+]
+\addplot[blue, thick, mark=*] coordinates {
+(2005,-3.486867) (2006,-3.545429) (2007,-3.555124) (2008,-3.570096) (2009,-3.755681)
+(2010,-3.544311) (2011,-3.479947) (2012,-3.621541) (2013,-3.633038) (2014,-3.770242)
+(2015,-3.785718) (2016,-3.810836) (2017,-4.041125) (2018,-4.088028) (2019,-4.111997)};
+\addlegendentry{Control}
+\addplot[red, thick, dashed, mark=square*] coordinates {
+(2005,-4.290294) (2006,-4.455685) (2007,-4.372112) (2008,-4.233557) (2009,-4.275174)
+(2010,-4.412996) (2011,-4.099500) (2012,-4.340008) (2013,-4.362340) (2014,-4.394455)
+(2015,-4.633153) (2016,-4.632875) (2017,-4.999076) (2018,-5.043403) (2019,-5.034514)};
+\addlegendentry{Treated}
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\caption{Descriptive averages by treatment status. Treated districts have higher nightlights levels, but the fixed-effects treatment effect in the restricted 2005--2019 panel is close to zero.}
+\label{fig:desc}
+\end{figure}
+
+\section*{4. Draft Analysis Tables and Figures}
+The most important empirical comparison at midterm is between the original nightlights first stage and the later restricted sample used for the pollution analysis. In the long replication-style DMSP window, we recover the classic result that leaders' birth regions experience higher nighttime light growth. But once we restrict attention to the 2005--2019 period needed for the ACAG panel, that first stage shrinks toward zero before pollution is even added. This is the main reason the environmental interpretation is difficult: the later sample does not reproduce the political-allocation pattern strongly enough in pooled estimates.
+
+\begin{table}[h]
+\centering
+\caption{Nightlights first stage across samples}
+\label{tab:first-stage}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccc}
+\toprule
+ & (1) & (2) & (3) & (4) \\
+\midrule
+BirthRegion & 0.0128 & 0.0017 & 0.0004 & -0.0026 \\
+ & (0.0059) & (0.0059) & (0.0087) & (0.0091) \\
+\addlinespace
+Sample window & 1992--2013 & 2005--2013 & 2005--2019 & 2005--2019 \\
+Data & DMSP & DMSP & Nightlights panel & ACAG merged panel \\
+Outcome & $\ln(\text{Nightlights}+0.01)$ & $\ln(\text{Nightlights}+0.01)$ & $\ln(\text{Nightlights}+0.01)$ & $\ln(\text{Nightlights}+0.01)$ \\
+Region FE & Yes & Yes & Yes & Yes \\
+Country-year FE & Yes & Yes & Yes & Yes \\
+\bottomrule
+\end{tabular}
+\par}
+\end{table}
+
+Table~\ref{tab:main-results} reports the main pooled estimates in the ACAG sample. These coefficients do not support ``green favoritism.'' The nightlights effect is essentially zero, while the contemporaneous NO$_2$ effect is weakly positive and statistically significant at the 5 percent level. The pollution-intensity outcome, defined as log NO$_2$ minus log nightlights, is also positive and marginally significant. In substantive terms, the current pooled estimates suggest either no special growth effect in birth regions or slightly dirtier contemporaneous growth, not cleaner development.
+
+\begin{table}[h]
+\centering
+\caption{Draft main results}
+\label{tab:main-results}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Outcome & Coefficient & Std. Err. & p-value & N \\
+\midrule
+$\ln(\text{Nightlights}+0.01)$ & -0.0026 & 0.0091 & 0.778 & 631{,}377 \\
+$\ln(\text{NO}_2+0.01)$ & 0.0308 & 0.0154 & 0.045 & 631{,}377 \\
+Pollution intensity & 0.0333 & 0.0179 & 0.063 & 631{,}377 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The heterogeneity checks are useful because they test whether the missing first stage reappears where the theory would most strongly predict it. So far that does not happen. The democracy interaction shows no meaningful birth-region effect in either nightlights or NO$_2$, and the interaction term itself is close to zero. Restricting the sample to stricter autocracies produces somewhat larger pollution-side coefficients, but not cleaner ones: in the $v2x\_polyarchy < 0.3$ subsample, the pollution-intensity coefficient is positive and statistically significant. That pattern leans away from the original ``green favoritism'' hypothesis and more toward a weak dirty-growth interpretation in the narrowest autocracy sample.
+
+\begin{table}[h]
+\centering
+\caption{Draft heterogeneity checks}
+\label{tab:heterogeneity}
+\small
+\begin{tabular}{p{3.0cm}p{2.2cm}rrr}
+\toprule
+Specification & Outcome & Coefficient & Std. Err. & p-value \\
+\midrule
+Democracy interaction & $\ln(\text{Nightlights}+0.01)$: BirthRegion & -0.0032 & 0.0257 & 0.901 \\
+Democracy interaction & $\ln(\text{NO}_2+0.01)$: BirthRegion & -0.0134 & 0.0406 & 0.741 \\
+Autocracy only ($<0.3$) & $\ln(\text{NO}_2+0.01)$ & 0.0682 & 0.0467 & 0.144 \\
+Autocracy only ($<0.3$) & Pollution intensity & 0.1136 & 0.0530 & 0.032 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\begin{minipage}{0.48\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=\textwidth,
+    height=5.2cm,
+    title={Event study: log NO$_2$},
+    xlabel={Years since ascension},
+    ylabel={Coefficient},
+    xmin=-5.5, xmax=5.5,
+    ymin=-0.03, ymax=0.08,
+    xtick={-5,-4,-3,-2,0,1,2,3,4,5},
+    grid=major,
+]
+\addplot[blue, thick, mark=*] coordinates {
+(-5,0.04819) (-4,0.00676) (-3,0.03079) (-2,0.04065) (0,0.02376)
+(1,0.02677) (2,0.01317) (3,0.05344) (4,0.04950) (5,-0.00847)};
+\addplot[gray, dotted, thick] coordinates {(0,-0.03) (0,0.08)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=\textwidth,
+    height=5.2cm,
+    title={Event study: pollution intensity},
+    xlabel={Years since ascension},
+    ylabel={Coefficient},
+    xmin=-5.5, xmax=5.5,
+    ymin=-0.04, ymax=0.06,
+    xtick={-5,-4,-3,-2,0,1,2,3,4,5},
+    grid=major,
+]
+\addplot[red, thick, mark=square*] coordinates {
+(-5,0.00527) (-4,-0.03065) (-3,0.00611) (-2,0.02323) (0,0.00175)
+(1,0.00920) (2,0.00190) (3,0.02816) (4,0.05238) (5,-0.02614)};
+\addplot[gray, dotted, thick] coordinates {(0,-0.04) (0,0.06)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\caption{Draft event-study figures. The dynamics are not cleanly post-treatment: some pre-period movement remains, and the strongest positive coefficients appear only three to four years after ascension.}
+\label{fig:event-study}
+\end{figure}
+
+The event studies point in the same direction, but they are not yet clean enough for a strong causal claim. The most notable positive NO$_2$ coefficients appear three to four years after leader ascension, and pollution intensity also turns positive around year four. However, there is already some movement in the pre-period, which means we cannot yet interpret the timing as clearly post-treatment. The narrowest defensible summary is therefore this: the data pipeline now works, the pollution outcomes are measurable, but within the 2005--2019 sample we do not find evidence that leaders channel cleaner growth to their birth regions.
+
+\section*{5. Plan for Remaining Work}
+\begin{enumerate}[leftmargin=*]
+    \item Tighten the identification strategy by testing whether the baseline lights first stage reappears in narrower subsamples, especially strict autocracies and the DMSP-only 2005--2013 window.
+    \item Expand the pollution-side robustness checks using alternative outcomes or transformations, including PM$_{2.5}$ as a possible alternative pollution proxy if the NO$_2$ framing remains weak.
+    \item Build cleaner event-study figures with confidence intervals and a more explicit treatment-timing design.
+    \item Decide on the final framing: either a narrower heterogeneity paper about autocratic favoritism and pollution, or a later-period null result showing attenuation of classic favoritism in the ACAG era.
+    \item Convert the current notebook results into publication-style tables and a short empirical narrative for the final report.
+\end{enumerate}
+
+\section*{6. Updated Responsibilities}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Richard Schulz}: leads the NO$_2$ workstream, including the ACAG ingestion pipeline, spatial processing, construction of the NO$_2$ panel, and the corresponding empirical analysis in the main notebook and report.
+    \item \textbf{Muhammad Altaf}: leads the PM$_{2.5}$ extension, including assessing data availability, building a parallel pollution workflow, and evaluating whether PM$_{2.5}$ offers a stronger or more interpretable pollution outcome for the project.
+    \item \textbf{Ruby Wang}: leads the reproduction and inspection of the ``standard'' regional favoritism result, including checking the nightlights first stage, comparing the restricted sample to the original replication window, and helping diagnose why the effect weakens in 2005--2019.
+\end{itemize}
+
+\section*{7. Questions for Feedback}
+\begin{enumerate}[leftmargin=*]
+    \item Is the most defensible next step to focus on autocracy-only or other theoretically motivated heterogeneity, rather than pooled average effects?
+    \item Are there alternative identification strategies or sample restrictions you would prioritize before we invest more time in additional robustness checks?
+\end{enumerate}
+
+\end{document}
