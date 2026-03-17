@@ -73,5 +73,7 @@ Current estimates on the 2005-2019 ACAG window do not show the expected Green Fa
 - Main pooled spec (`ln(NO2)`): small positive Lag 0 effect (0.0308, p=0.045).
 - Pollution intensity `ln(NO2) - ln(Nightlights)`: positive at Lag 0 (0.0333, p=0.063), not significant at Lag 1.
 - Democracy interaction: no statistically meaningful interaction effects in this restricted window.
+- Autocracy-only subsample (`v2x_polyarchy < 0.3`): pollution intensity is positive at Lag 0 (0.1136, p=0.032), which points away from cleaner growth.
+- Event-study results: NO2 and pollution-intensity coefficients turn positive around 3-4 years after ascension, but there is still some pre-period movement, so the dynamic evidence is not yet clean.
 
 For reference, the replication-style long DMSP sample (1992-2013) still shows a positive nightlights favoritism coefficient (about 0.0128, p=0.030), but this fades in the restricted 2005+ sample.
