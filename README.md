@@ -23,8 +23,9 @@ This project uses the following datasets:
         * `Harmonized_DN_NTL_2005_calDMSP.tif` through `Harmonized_DN_NTL_2013_calDMSP.tif`
         * `Harmonized_DN_NTL_2014_simVIIRS.tif` through `Harmonized_DN_NTL_2019_simVIIRS.tif`
     *   Place files in `data/nightlights/`.
-3.  **V-Dem (Varieties of Democracy):** Used for the democracy interaction specification. Download the **Country-Year Core** CSV from the [V-Dem website](https://v-dem.net/data/the-v-dem-dataset/) (free registration required) and place it in the `data/vdem/` directory.
-4.  **GADM Admin Boundaries:** Downloaded automatically by the reproduction notebook on first run. Cached in `data/gadm/`.
+3.  **ACAG SatPM PM2.5 (1998-2024):** Used for the PM2.5 extension. Download the annual NetCDF files named `V5GL06.HybridPM25.Global.<YYYY>01-<YYYY>12.nc` from [SatPM](https://www.satpm.org/v5-gl-06) / [ACAG Box](https://wustl.app.box.com/v/ACAG-V5GL06-GWRPM25/folder/349055735295) and place them in `data/pm25/`.
+4.  **V-Dem (Varieties of Democracy):** Used for the democracy interaction specification. Download the **Country-Year Core** CSV from the [V-Dem website](https://v-dem.net/data/the-v-dem-dataset/) (free registration required) and place it in the `data/vdem/` directory.
+5.  **GADM Admin Boundaries:** Downloaded automatically by the reproduction notebook on first run. Cached in `data/gadm/`.
 
 ## Build ACAG NO2 Panel (2005-2019)
 
@@ -52,11 +53,29 @@ Useful options:
 ./venv/bin/python scripts/build_acag_no2_panel.py --force-process
 ```
 
+## Build ACAG PM2.5 Panel (1998-2024)
+
+To build the long-run ADM2 PM2.5 panel used by the PM2.5 extension, run:
+
+```bash
+./venv/bin/python scripts/build_pm25_panel.py
+```
+
+The script:
+- reads annual ACAG SatPM NetCDF files from `data/pm25/`
+- computes ADM2 zonal means using the cached GADM boundaries in `data/gadm/gadm41_adm2.gpkg`
+- writes the combined panel to `data/pm25_adm2_acag_panel.parquet`
+
+Before running it, make sure the annual PM2.5 files for 1998-2024 are present in `data/pm25/`.
+
 ## Run Analysis
 
-Use `analysis/green_favoritism.ipynb` for the ACAG 2005-2019 analysis.
+Use these notebooks for the current analysis workflows:
 
-Notebook workflow:
+- `analysis/green_favoritism.ipynb`: ACAG NO2 + nightlights analysis on the 2005-2019 window.
+- `analysis/green_favoritism_pm25.ipynb`: PM2.5 extension on the 1998-2024 window.
+
+`analysis/green_favoritism.ipynb` workflow:
 1. Load ADM2 boundaries and build PLAD treatment.
 2. Build/load nightlights panel for 2005-2019 (DMSP for 2005-2013, simVIIRS for 2014-2019).
 3. Load `data/no2_adm2_acag_panel.parquet`.
@@ -64,6 +83,15 @@ Notebook workflow:
    - main Green Favoritism regressions,
    - democracy interaction,
    - pollution-intensity outcome.
+
+`analysis/green_favoritism_pm25.ipynb` workflow:
+1. Load `data/pm25_adm2_acag_panel.parquet`.
+2. Build PLAD treatment variables.
+3. Run:
+   - main PM2.5 regressions,
+   - democracy interaction,
+   - autocracy-only subsamples,
+   - PM2.5 event study.
 
 ## Results Snapshot (Current)
 

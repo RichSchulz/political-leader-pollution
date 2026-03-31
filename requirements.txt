@@ -3,6 +3,8 @@ pandas
 geopandas
 rasterio
 rasterstats
+netCDF4
+tqdm
 linearmodels
 pyarrow
 earthengine-api

@@ -28,6 +28,11 @@ from rasterio.transform import from_bounds
 from rasterstats import zonal_stats
 from shapely.geometry import box
 
+try:
+    from gid_utils import valid_gid_mask
+except ModuleNotFoundError:
+    from scripts.gid_utils import valid_gid_mask
+
 
 BASE_URL = "https://zenodo.org/records/5424752/files"
 CONTINENTS = (
@@ -105,6 +110,7 @@ def load_adm2() -> gpd.GeoDataFrame:
             "Run the replication notebook first to build it."
         )
     adm2 = gpd.read_file(GADM_PATH, columns=["GID_0", "GID_1", "GID_2", "geometry"])
+    adm2 = adm2.loc[valid_gid_mask(adm2["GID_2"])].copy()
     if adm2.crs is None:
         raise ValueError(f"{GADM_PATH} has no CRS; expected EPSG:4326.")
     if adm2.crs.to_epsg() != 4326:
@@ -302,6 +308,7 @@ def combine_parts(years: set[int]) -> None:
     frames = [pd.read_parquet(path) for path in part_files]
     panel = pd.concat(frames, ignore_index=True)
     panel = panel[panel["year"].isin(years)].copy()
+    panel = panel.loc[valid_gid_mask(panel["GID_2"])].copy()
     if panel.empty:
         raise RuntimeError("No rows found for the requested year range.")
 
