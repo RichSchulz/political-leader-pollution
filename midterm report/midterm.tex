@@ -24,13 +24,13 @@
 \thispagestyle{empty}
 
 \begin{abstract}
-This project studies whether political leaders direct cleaner growth to their birth regions while shifting pollution-intensive activity elsewhere. We combine PLAD birth-region information, harmonized nighttime lights, ACAG surface NO$_2$, V-Dem democracy scores, and GADM ADM2 boundaries to build a global district-year panel for 2005--2019. Preliminary results replicate the classic regional favoritism result in the long 1992--2013 nightlights sample, but the birth-region nightlights effect disappears in the restricted 2005--2019 window required by the ACAG NO$_2$ data. In that restricted sample, we do not find evidence of ``green favoritism'': pooled NO$_2$ estimates are weakly positive at lag 0, pollution intensity is also weakly positive, autocracy-only results point in the same direction rather than toward cleaner growth, and event-study coefficients turn positive only several years after ascension while still showing some pre-period movement. The main empirical issue for the second half of the project is therefore not data access but interpretation: the original favoritism result is hard to reproduce in the later sample window.
+This project studies whether political leaders direct cleaner growth to their birth regions while shifting pollution-intensive activity elsewhere. We combine PLAD birth-region information, harmonized nighttime lights, ACAG surface NO$_2$, V-Dem democracy scores, and GADM ADM2 boundaries to build a global district-year panel for 2005--2019. Preliminary results replicate the classic regional favoritism result in the long 1992--2013 nightlights sample. New nested-window diagnostics show that this is not just a 1990s artifact: the birth-region coefficient remains positive through 2000--2013 and collapses only in 2005--2013, pointing to a later-window attenuation rather than a simple decade break. In the restricted 2005--2019 pollution sample, we do not find evidence of ``green favoritism'': pooled NO$_2$ estimates are weakly positive at lag 0, pollution intensity is also weakly positive, autocracy-only results point in the same direction rather than toward cleaner growth, and event-study coefficients turn positive only several years after ascension while still showing some pre-period movement. A parallel PM$_{2.5}$ extension points in a similar direction: longer windows (1998--2024 and 1998--2019) show positive and statistically significant pollution effects, while the later 2005--2024 window is positive but null. The main empirical issue for the second half of the project is therefore not data access but interpretation: the original favoritism result weakens sharply in the post-2005 period, which constrains how cleanly we can interpret the environmental extension.
 \end{abstract}
 
 \section*{1. Project Status and Research Question}
 Our research question is whether leaders channel cleaner forms of economic development to their own birth regions while leaving dirtier activity to politically peripheral districts. The intended empirical signature is a positive treatment effect on nighttime lights combined with a zero or negative treatment effect on pollution. The midterm milestone focused on building a proposal-aligned 2005--2019 panel using ACAG NO$_2$ data, harmonized nightlights, and PLAD treatment coding at ADM2 level.
 
-The main progress since the proposal is that the data pipeline is now working end-to-end. The key empirical issue is now substantive rather than technical: the classic birth-region favoritism effect in nightlights is present in the long historical sample, but it largely disappears in the later 2005--2019 panel.
+The main progress since the proposal is that the data pipeline is now working end-to-end. The key empirical issue is now substantive rather than technical: the classic birth-region favoritism effect in nightlights is present in the long historical sample and survives through 2000--2013, but it largely disappears in the post-2005 window that overlaps the pollution analysis.
 
 \section*{2. Annotated Bibliography}
 \begin{enumerate}[leftmargin=*, itemsep=0.5em]
@@ -155,32 +155,77 @@ Treatment indicator & 0.0024 & -- & 0 & Share of treated observations \\
 \end{figure}
 
 \section*{4. Draft Analysis Tables and Figures}
-The most important empirical comparison at midterm is between the original nightlights first stage and the later restricted sample used for the pollution analysis. In the long replication-style DMSP window, we recover the classic result that leaders' birth regions experience higher nighttime light growth. But once we restrict attention to the 2005--2019 period needed for the ACAG panel, that first stage shrinks toward zero before pollution is even added. This is the main reason the environmental interpretation is difficult: the later sample does not reproduce the political-allocation pattern strongly enough in pooled estimates.
+\subsection*{4.1 First-Stage Replication Diagnostics}
+The central empirical comparison concerns the original nightlights first stage and the later restricted sample used for the pollution analysis. In the long replication-style DMSP window, the estimated birth-region effect is positive and statistically significant. The nested-window diagnostics in Table~\ref{tab:first-stage} indicate that this pattern is not confined to the 1990s: the coefficient remains positive in 1995--2013 and persists, though more weakly, in 2000--2013. The sharp attenuation occurs only in 2005--2013.
 
 \begin{table}[h]
 \centering
-\caption{Nightlights first stage across samples}
+\caption{Nested-window replication diagnostics for the nightlights first stage}
 \label{tab:first-stage}
 \small
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{lcccc}
 \toprule
- & (1) & (2) & (3) & (4) \\
+ & 1992--2013 & 1995--2013 & 2000--2013 & 2005--2013 \\
 \midrule
-BirthRegion & 0.0128 & 0.0017 & 0.0004 & -0.0026 \\
- & (0.0059) & (0.0059) & (0.0087) & (0.0091) \\
+Lag 0 & 0.0128** & 0.0187*** & 0.0110* & 0.0017 \\
+ & (0.0059) & (0.0055) & (0.0058) & (0.0058) \\
+Lag 1 & 0.0171*** & 0.0189*** & 0.0109* & -0.0033 \\
+ & (0.0056) & (0.0054) & (0.0059) & (0.0066) \\
+Lag 2 & 0.0143*** & 0.0169*** & 0.0119** & 0.0032 \\
+ & (0.0055) & (0.0052) & (0.0057) & (0.0063) \\
 \addlinespace
-Sample window & 1992--2013 & 2005--2013 & 2005--2019 & 2005--2019 \\
-Data & DMSP & DMSP & Nightlights panel & ACAG merged panel \\
 Outcome & $\ln(\text{Nightlights}+0.01)$ & $\ln(\text{Nightlights}+0.01)$ & $\ln(\text{Nightlights}+0.01)$ & $\ln(\text{Nightlights}+0.01)$ \\
 Region FE & Yes & Yes & Yes & Yes \\
 Country-year FE & Yes & Yes & Yes & Yes \\
+N & 951,959 & 830,026 & 615,688 & 398,654 \\
+Treated obs & 2,522 & 2,196 & 1,647 & 1,068 \\
+Leader-period clusters & 2,745 & 2,377 & 1,773 & 1,195 \\
 \bottomrule
 \end{tabular}
 \par}
 \end{table}
 
-Table~\ref{tab:main-results} reports the main pooled estimates in the ACAG sample. These coefficients do not support ``green favoritism.'' The nightlights effect is essentially zero, while the contemporaneous NO$_2$ effect is weakly positive and statistically significant at the 5 percent level. The pollution-intensity outcome, defined as log NO$_2$ minus log nightlights, is also positive and marginally significant. In substantive terms, the current pooled estimates suggest either no special growth effect in birth regions or slightly dirtier contemporaneous growth, not cleaner development.
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.72\textwidth,
+    height=5.4cm,
+    title={Lag 0 replication coefficient across nested windows},
+    xlabel={Window start year},
+    ylabel={Coefficient},
+    xmin=1991, xmax=2006,
+    ymin=-0.012, ymax=0.032,
+    xtick={1992,1995,2000,2005},
+    grid=major,
+]
+\addplot[only marks, mark=*, black] coordinates {
+(1992,0.0128) (1995,0.0187) (2000,0.0110) (2005,0.0017)
+};
+\addplot[black, thick] coordinates {(1992,0.0128) (1995,0.0187) (2000,0.0110) (2005,0.0017)};
+\addplot[gray, dashed] coordinates {(1991,0) (2006,0)};
+\addplot[error bars/.cd, y dir=both, y explicit]
+coordinates {
+(1992,0.0128) +- (0,0.0115)
+(1995,0.0187) +- (0,0.0108)
+(2000,0.0110) +- (0,0.0113)
+(2005,0.0017) +- (0,0.0115)
+};
+\end{axis}
+\end{tikzpicture}
+\caption{Lag 0 nested-window estimates with 95\% confidence intervals. The coefficient stays positive through 2000--2013 and collapses only in the post-2005 window.}
+\label{fig:first-stage-window}
+\end{figure}
+
+\textbf{Interpretation of the nested-window diagnostics.} The replication holds in the long DMSP-era sample and does not disappear immediately once the 1990s are excluded. The birth-region coefficient remains positive in 1995--2013 and remains positive, though weaker, in 2000--2013. The sharp attenuation occurs only in 2005--2013. Accordingly, the evidence is more consistent with a later-period weakening of the first stage than with a result driven exclusively by the late 1990s.
+
+\textbf{Implications and remaining explanations.} These diagnostics reduce the plausibility of two simple explanations. First, the attenuation is not driven by the DMSP--VIIRS transition, because 2005--2013 remains entirely within the DMSP era. Second, it is not well summarized by a sharp decade break: the pooled $BirthRegion \times post2000$ and $BirthRegion \times post2010$ interactions are both statistically insignificant in the full 1992--2013 sample. Remaining possibilities include a smaller number of treated observations and clusters in the later window, weaker favoritism in the later political period, changes in country or leader composition, and attenuation specific to the post-2005 period rather than to a single decade indicator.
+
+\subsection*{4.2 Pollution-Side Results}
+Because the first-stage lights effect collapses in the later window, the environmental interpretation is constrained. The pollution regressions should therefore be read as evidence about later-period pollution dynamics in leaders' birth regions, not as a clean test of ``green favoritism'' built on a strongly replicated favoritism first stage.
+
+Table~\ref{tab:main-results} reports the main pooled estimates in the ACAG sample. These coefficients do not support ``green favoritism.'' The nightlights effect is essentially zero, while the contemporaneous NO$_2$ effect is weakly positive and statistically significant at the 5 percent level. The pollution-intensity outcome, defined as log NO$_2$ minus log nightlights, is also positive and marginally significant. In substantive terms, the current pooled estimates suggest either no special growth effect in birth regions or slightly dirtier contemporaneous growth, not cleaner development. The decade-interaction check from the replication notebook is therefore a supporting fact rather than a central result: it does not show a statistically distinct post-2000 or post-2010 break, and the nested-window comparison remains the clearest diagnostic.
 
 \begin{table}[h]
 \centering
@@ -266,7 +311,7 @@ Autocracy only ($<0.3$) & Pollution intensity & 0.1136 & 0.0530 & 0.032 \\
 \label{fig:event-study}
 \end{figure}
 
-The event studies point in the same direction, but they are not yet clean enough for a strong causal claim. The most notable positive NO$_2$ coefficients appear three to four years after leader ascension, and pollution intensity also turns positive around year four. However, there is already some movement in the pre-period, which means we cannot yet interpret the timing as clearly post-treatment. The narrowest defensible summary is therefore this: the data pipeline now works, the pollution outcomes are measurable, but within the 2005--2019 sample we do not find evidence that leaders channel cleaner growth to their birth regions.
+The event studies point in the same direction, but they are not yet clean enough for a strong causal claim. The most notable positive NO$_2$ coefficients appear three to four years after leader ascension, and pollution intensity also turns positive around year four. However, there is already some movement in the pre-period, which means we cannot yet interpret the timing as clearly post-treatment. A separate PM$_{2.5}$ exercise reinforces the broader pattern rather than overturning it: in longer windows, the treatment effect on log PM$_{2.5}$ is positive and statistically significant (for example, 0.0078 with $p=0.011$ for 1998--2024 and 0.0091 with $p=0.002$ for 1998--2019), while the later 2005--2024 window yields positive but statistically insignificant coefficients. The narrowest defensible summary is therefore this: the data pipeline now works, the pollution outcomes are measurable, and across both NO$_2$ and PM$_{2.5}$ we do not find evidence that leaders channel cleaner growth to their birth regions.
 
 \section*{5. Plan for Remaining Work}
 \begin{enumerate}[leftmargin=*]
