@@ -15,7 +15,8 @@
 \pgfplotsset{compat=1.18}
 
 \title{\textbf{Do Leaders Export Pollution While Importing Wealth?}\\[0.35em]
-\large Midterm Report}
+\large Midterm Report\\[0.2em]
+\normalsize Research Paper Project}
 \author{Richard Schulz \and Ruby Wang \and Muhammad Majid Altaf}
 \date{\today}
 
@@ -48,23 +49,23 @@ The midterm milestone focused on assembling a proposal-aligned 2005--2019 panel 
 \end{enumerate}
 
 \section{Datasets and Descriptive Analysis}
-This section sets up the comparison that runs through the rest of the report: a long nightlights replication sample, a later 2005--2019 joint NO$_2$ and nightlights sample, and a longer-window PM$_{2.5}$ extension. Table~\ref{tab:data-summary} summarizes the datasets behind those panels, while Table~\ref{tab:sample-support} summarizes sample composition and treatment support across the three analysis panels.
+This section sets up the comparison that runs through the rest of the report: a long nightlights replication sample, a later 2005--2019 joint NO$_2$ and nightlights sample, and a longer-window PM$_{2.5}$ extension. Table~\ref{tab:data-summary} summarizes the core datasets and one compact preliminary diagnostic for each of them, while Table~\ref{tab:sample-support} summarizes sample composition and treatment support across the three analysis panels.
 
 \begin{table}[h]
 \centering
-\caption{Dataset summary}
+\caption{Datasets and key diagnostics}
 \label{tab:data-summary}
 \small
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}p{3.0cm}p{1.8cm}p{2.0cm}p{7.0cm}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}p{2.4cm}p{1.6cm}p{1.8cm}p{4.2cm}p{4.7cm}}
 \toprule
-Dataset & Coverage & Unit & Current use \\
+Dataset & Coverage & Unit & Current use & Key diagnostic \\
 \midrule
-PLAD & 148 countries in analysis window & Leader-year / birth district & Birth-region treatment and leader spell construction \\
-Nightlights & 2005--2019 & ADM2-year & Harmonized DMSP (2005--2013) and simVIIRS (2014--2019) \\
-ACAG surface NO$_2$ & 2005--2019 & ADM2-year & Main pollution outcome in the proposal-aligned panel \\
-ACAG SatPM PM$_{2.5}$ & 1998--2024 & ADM2-year & Parallel pollution extension; longer-window robustness check beyond the ACAG NO$_2$ sample \\
-V-Dem polyarchy & 2005--2019 & Country-year & Democracy interaction and autocracy subsamples \\
-GADM v4.1 & Static & ADM2 polygon & Common spatial aggregation unit \\
+PLAD & 148 countries in analysis window & Leader-year / birth district & Birth-region treatment and leader spell construction & 391 leaders; 414 spells; 1{,}590 treated ADM2-years in 2005--2019 \\
+Nightlights & 2005--2019 & ADM2-year & Harmonized DMSP (2005--2013) and simVIIRS (2014--2019) & Mean $= 14.79$; SD $= 13.04$ \\
+ACAG surface NO$_2$ & 2005--2019 & ADM2-year & Main pollution outcome in the proposal-aligned panel & Mean $= 0.96$ ppb; SD $= 2.02$ \\
+ACAG SatPM PM$_{2.5}$ & 1998--2024 & ADM2-year & Parallel pollution extension; longer-window robustness check beyond the ACAG NO$_2$ sample & Mean $= 17.59$ $\mu$g/m$^3$; SD $= 11.14$ \\
+V-Dem polyarchy & 2005--2019 & Country-year & Democracy interaction and autocracy subsamples & Mean polyarchy $= 0.526$; 25.5\% of country-years below 0.3 \\
+GADM v4.1 & Static & ADM2 polygon & Common spatial aggregation unit & 47{,}463 ADM2 units in the main 2005--2019 joint panel \\
 \bottomrule
 \end{tabular*}
 \end{table}
@@ -404,13 +405,14 @@ Country-year FE & \multicolumn{4}{l}{Yes} \\
 \end{tabular}
 \end{table}
 
-\section{Plan for Remaining Work}
-\noindent The data infrastructure is now in place. The central challenge for the final report is interpretive: the classic favoritism first stage is strong in the long historical sample but weak in the 2005--2019 window where pollution data exist. The remaining work addresses this in three stages.
+\section{Timeline and Remaining Work}
+\noindent The data infrastructure is now in place. The central challenge for the final report is interpretive: the classic favoritism first stage is strong in the long historical sample but weak in the 2005--2019 window where pollution data exist. Our plan for the rest of the semester is therefore organized around a short, feasible timeline.
 
 \begin{enumerate}[leftmargin=*]
-    \item \textbf{Resolve the first-stage attenuation.} Determine whether the nightlights effect survives in strict-autocracy subsamples ($v2x\_polyarchy < 0.3$), in the DMSP-only 2005--2013 window, or in specific country groups. This will determine whether the final paper can condition the pollution analysis on a credible first stage or must instead frame the attenuation itself as the main finding.
-    \item \textbf{Strengthen the pollution-side evidence.} Test sensitivity to alternative outcome transformations and formally compare NO$_2$ and PM$_{2.5}$ results to assess whether they tell a consistent story.
-    \item \textbf{Settle the paper framing.} Based on the results of steps 1 and 2, commit to one of two narratives: (a)~a heterogeneity paper showing that favoritism and its environmental footprint persist in autocracies, or (b)~a later-period null-result paper documenting the attenuation of classic favoritism and the absence of green favoritism in the pollution era.
+    \item \textbf{By April 12, 2026: resolve the first-stage attenuation.} Determine whether the nightlights effect survives in strict-autocracy subsamples ($v2x\_polyarchy < 0.3$), in the DMSP-only 2005--2013 window, or in specific country groups. This will determine whether the final paper can condition the pollution analysis on a credible first stage or must instead frame the attenuation itself as the main finding.
+    \item \textbf{By April 21, 2026: strengthen the pollution-side evidence.} Test sensitivity to alternative outcome transformations, refine the event-study design, and formally compare NO$_2$ and PM$_{2.5}$ results to assess whether they tell a consistent story.
+    \item \textbf{By April 28, 2026: settle the final paper framing and core results.} Based on the results of steps 1 and 2, commit to one of two narratives: (a)~a heterogeneity paper showing that favoritism and its environmental footprint persist in autocracies, or (b)~a later-period null-result paper documenting the attenuation of classic favoritism and the absence of green favoritism in the pollution era. At that point we will lock the main tables and figures and divide the remaining writing tasks.
+    \item \textbf{By May 4, 2026: complete the final paper draft and revision pass.} Finalize the draft, polish the tables and figures, and complete one last round of edits before submission.
 \end{enumerate}
 
 \section{Updated Responsibilities}
@@ -424,7 +426,7 @@ Country-year FE & \multicolumn{4}{l}{Yes} \\
 \section{Questions for Feedback}
 \begin{enumerate}[leftmargin=*]
     \item The nightlights first stage is strong in the long 1992--2013 sample but essentially zero in the 2005--2019 window where our pollution data exist. Should the final paper focus on (a)~documenting this attenuation as the main result, or (b)~restricting to subsamples where the first stage survives (e.g., strict autocracies) and framing the paper around heterogeneity in favoritism and pollution?
-    \item We can invest remaining time in several directions: adding more pollution robustness checks (alternative transformations, additional pollutants), improving the event-study design (confidence intervals, sharper pre-trend tests), or narrowing the sample to strengthen the first stage. Which of these would be most valuable for the final report?
+    \item We can invest remaining time in several directions: adding more pollution robustness checks (alternative transformations, additional pollutants), sharpening the event-study design and pre-trend diagnostics, or narrowing the sample to strengthen the first stage. Which of these would be most valuable for the final report?
 \end{enumerate}
 
 \end{document}
