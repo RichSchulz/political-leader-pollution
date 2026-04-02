@@ -93,6 +93,14 @@ Use these notebooks for the current analysis workflows:
    - autocracy-only subsamples,
    - PM2.5 event study.
 
+For the PM2.5 analogue of the NO2 pollution-intensity outcome on the overlapping `2005-2019` nightlights window, run:
+
+```bash
+./venv/bin/python scripts/run_pm25_pollution_intensity.py
+```
+
+This writes the regression output to `data/pm25_pollution_intensity_results.csv`.
+
 ## Results Snapshot (Current)
 
 Current estimates on the 2005-2019 ACAG window do not show the expected Green Favoritism pattern:
@@ -104,6 +112,7 @@ Current estimates on the 2005-2019 ACAG window do not show the expected Green Fa
 - Autocracy-only subsample (`v2x_polyarchy < 0.3`): pollution intensity is positive at Lag 0 (0.1136, p=0.032), which points away from cleaner growth.
 - Event-study results: NO2 and pollution-intensity coefficients turn positive around 3-4 years after ascension, but there is still some pre-period movement, so the dynamic evidence is not yet clean.
 - PM2.5 extension: the longer windows show positive and statistically significant pollution effects (`1998-2024`: Lag 0 = 0.0078, p=0.011; `1998-2019`: Lag 0 = 0.0091, p=0.002), while the later `2005-2024` window is positive but null.
+- PM2.5 pollution intensity `ln(PM2.5) - ln(Nightlights)` on the overlapping `2005-2019` sample is not negative either: Lag 0 = `0.0041` (`p=0.665`), Lag 1 = `0.0122` (`p=0.120`), and Lag 2 = `0.0175` (`p=0.019`).
 - Replication diagnostics: the nightlights favoritism coefficient stays positive in `1995-2013` (0.0187, p=0.001) and `2000-2013` (0.0110, p=0.056), then collapses only in `2005-2013` (0.0017, p=0.768).
 - Decade interaction check: pooled `BirthRegion × post2000` and `BirthRegion × post2010` interactions are not statistically significant, so the cleaner evidence comes from the nested-window comparison rather than a sharp decade break.
 
