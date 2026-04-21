@@ -21,3 +21,10 @@ data/acag_no2_raw/
 data/acag_no2_parts/
 data/no2_adm2_acag_panel.parquet
 data/nightlights_adm2_green_favoritism_panel.parquet
+data/nightlights_adm2_viirs_panel.parquet
+data/no2_adm2_annual.csv
+data/no2_adm2_panel.parquet
+data/pm25/
+data/pm25_adm2_acag_panel.parquet
+data/gadm/gadm41_adm2_shp/
+.tmp_pm25/
