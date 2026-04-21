@@ -15,15 +15,15 @@
 
 \leadauthor{Schulz}
 
-\significancestatement{Regional favoritism is a well-known finding in political economy: leaders tend to direct economic activity toward their birth regions. This project asks whether that directed growth is also environmentally cleaner. Using global subnational panels of political leaders, nightlights, and satellite-based pollution, we do not find evidence of cleaner birth-region growth in the later period where pollution data are available. Instead, the central empirical result is that the classic nightlights first stage weakens sharply after 2005. That attenuation limits strong claims about green favoritism and shifts the contribution toward diagnosing how a canonical favoritism result changes in the later satellite era.}
+\significancestatement{Regional favoritism is a well-known finding in political economy: leaders tend to direct economic activity toward their birth regions. This paper asks whether that directed growth is also environmentally cleaner. Using global subnational panels of political leaders, nightlights, and satellite-based pollution, we do not find evidence of cleaner birth-region growth in the later period where pollution data are available. Instead, the central empirical result is that the classic nightlights first stage weakens sharply after 2005. That attenuation limits strong claims about green favoritism and shifts the contribution toward diagnosing how a canonical favoritism result changes in the later satellite era.}
 
-\authorcontributions{R.S. conceived the project, built and integrated the main data pipeline, ran the core empirical analysis, and drafted the manuscript. M.M.A. contributed to the NO$_2$ analysis and related project development. R.W. contributed to manuscript feedback and proofreading.}
-\authordeclaration{The authors declare no competing interests at this stage. Update this statement before any external submission.}
+\authorcontributions{R.S. conceived the study, built and integrated the main data pipeline, ran the core empirical analysis, and drafted the manuscript. M.M.A. contributed to the NO$_2$ analysis. R.W. contributed to manuscript review and proofreading.}
+\authordeclaration{The authors declare no competing interests.}
 \correspondingauthor{To whom correspondence should be addressed. E-mail: rschul@ethz.ch}
 \keywords{regional favoritism $|$ political economy $|$ nighttime lights $|$ air pollution $|$ autocracy}
 
 \begin{abstract}
-We study whether national leaders direct cleaner economic growth to their birth regions rather than simply more growth. We combine the Political Leaders' Affiliation Database, ADM2-level nightlights, ACAG surface NO$_2$, ACAG PM$_{2.5}$, V-Dem democracy scores, and GADM administrative boundaries in a global district-year panel with region fixed effects, country-year fixed effects, and leader-period clustering. In the long DMSP replication window, we recover the classic birth-region nightlights result: the lag-0 coefficient is about 0.0128 in 1992--2013 ($p = 0.030$), remains positive in 1995--2013 and 2000--2013, and then collapses in 2005--2013 (0.0017, $p = 0.768$). The harmonized 2005--2019 nightlights coefficient is also essentially zero (0.0004, $p = 0.966$). A targeted search across geography, tenure, autocracy, luminosity headroom, and pollution-support subsamples finds that Africa and Sub-Saharan Africa drive a strong historical DMSP result, but no post-2005 subsample clears a pre-specified credible-first-stage rule. In the later pollution window, the lag-0 NO$_2$ coefficient is positive (0.0308, $p = 0.045$) and the pollution-intensity outcome log(NO$_2$) minus log(nightlights) is also positive (0.0333, $p = 0.063$). The current evidence therefore does not support green favoritism in the post-2005 pollution window. Instead, the main empirical development is attenuation of the first-stage nightlights effect in later years.
+We study whether national leaders direct cleaner economic growth to their birth regions rather than simply more growth. We combine the Political Leaders' Affiliation Database, ADM2-level nightlights, ACAG surface NO$_2$, ACAG PM$_{2.5}$, V-Dem democracy scores, and GADM administrative boundaries in a global district-year panel with region fixed effects, country-year fixed effects, and leader-period clustering. In the long DMSP replication window, we recover the classic birth-region nightlights result: the lag-0 coefficient is about 0.0128 in 1992--2013 ($p = 0.030$), remains positive in 1995--2013 and 2000--2013, and then collapses in 2005--2013 (0.0017, $p = 0.768$). The harmonized 2005--2019 nightlights coefficient is also essentially zero (0.0004, $p = 0.966$). A targeted search across geography, tenure, autocracy, luminosity headroom, and pollution-support subsamples finds that Africa and Sub-Saharan Africa drive a strong historical DMSP result, but no post-2005 subsample clears a credible-first-stage criterion. In the later pollution window, the lag-0 NO$_2$ coefficient is positive (0.0308, $p = 0.045$) and the pollution-intensity outcome log(NO$_2$) minus log(nightlights) is also positive (0.0333, $p = 0.063$). The evidence therefore does not support green favoritism in the post-2005 pollution window. Instead, the main empirical development is attenuation of the first-stage nightlights effect in later years.
 \end{abstract}
 
 \dates{Draft compiled on \today}
@@ -33,23 +33,23 @@ We study whether national leaders direct cleaner economic growth to their birth 
 \thispagestyle{firststyle}
 \ifthenelse{\boolean{shortarticle}}{\ifthenelse{\boolean{singlecolumn}}{\abscontentformatted}{\abscontent}}{}
 
-Political leaders often direct resources toward their home regions, a pattern documented in cross-country evidence using subnational nightlights \cite{HodlerRaschky2014}. Recent replication work suggests that the classic result remains visible in modern data, but also highlights the importance of data choice and periodization \cite{Bora2025}. Our project extends that literature by asking whether politically favored regions receive not only more development, but cleaner development.
+Political leaders often direct resources toward their home regions, a pattern documented in cross-country evidence using subnational nightlights \cite{HodlerRaschky2014}. Recent replication work suggests that the classic result remains visible in modern data, but also highlights the importance of data choice and periodization \cite{Bora2025}. This paper extends that literature by asking whether politically favored regions receive not only more development, but cleaner development.
 
-The original idea was straightforward. If leaders have both the motive and the capacity to protect their home regions, birth-region favoritism may operate through the composition of growth as well as its quantity. Birth districts could receive cleaner sectors and amenity-enhancing investment while pollution-intensive activity is pushed toward politically peripheral areas. That possibility matters for environmental inequality as much as for distributive politics \cite{CopelandTaylor2004}.
+The hypothesis is straightforward. If leaders have both the motive and the capacity to protect their home regions, birth-region favoritism may operate through the composition of growth as well as its quantity. Birth districts could receive cleaner sectors and amenity-enhancing investment while pollution-intensive activity is pushed toward politically peripheral areas. That possibility matters for environmental inequality as much as for distributive politics \cite{CopelandTaylor2004}.
 
-The current evidence has shifted the project toward a different contribution. The long-run replication still works, but the first-stage nightlights effect weakens sharply in the post-2005 period that overlaps with the available NO$_2$ and harmonized nightlights data. Because the later pollution analysis depends on a credible later-period favoritism first stage, the central empirical task becomes explaining that attenuation rather than claiming evidence of green favoritism. Following the midterm feedback, the final analysis therefore adds a targeted search for theory-favored subsamples where the first stage might survive before interpreting any pollution effects.
+The evidence points to a different contribution. The long-run replication still works, but the first-stage nightlights effect weakens sharply in the post-2005 period that overlaps with the available NO$_2$ and harmonized nightlights data. Because the later pollution analysis depends on a credible later-period favoritism first stage, the central empirical task becomes explaining that attenuation rather than claiming evidence of green favoritism. We therefore estimate targeted subsample tests in settings where the first stage should be most likely to survive before interpreting any pollution effects.
 
 \section{Data and Empirical Design}
 
 The analysis combines five core inputs. First, the Political Leaders' Affiliation Database (PLAD) provides leader identity, spell timing, and subnational birthplace information used to code treatment \cite{Bomprezzi2025PLAD}. Second, nightlights provide the economic-activity proxy. We use a replication-style DMSP ADM2 panel for 1992--2013 and a harmonized DMSP-to-VIIRS panel for 2005--2019, with DMSP-based observations through 2013 and simulated VIIRS afterward \cite{Elvidge2013VIIRS}. Third, we use ACAG surface NO$_2$ data for the 2005--2019 pollution window \cite{Cooper2022NO2}. Fourth, we use ACAG SatPM PM$_{2.5}$ as a longer-window pollution extension. Fifth, GADM ADM2 boundaries provide the common subnational geography \cite{GADM2022}.
 
-Treatment is defined at the district-year level. A district is treated when it is the birth region of the national leader in office in that year. The code follows the same overlap fix used in the current analysis notebooks: if consecutive PLAD spells overlap within a country, the earlier spell is truncated so that spell-year treatment is unique.
+Treatment is defined at the district-year level. A district is treated when it is the birth region of the national leader in office in that year. To avoid double-counting transition years, consecutive PLAD spells that overlap within a country are adjusted by truncating the earlier spell so that spell-year treatment is unique.
 
 The core estimating equation uses ADM2 fixed effects and country-year fixed effects:
 \[
 \log(Y_{i c t} + 0.01) = \beta \, BirthRegionLeader_{i c t} + \alpha_i + \gamma_{c t} + \varepsilon_{i c t},
 \]
-where $i$ indexes ADM2 regions, $c$ countries, and $t$ years. Standard errors are clustered by leader-period spell. We estimate the specification for lag 0, lag 1, and lag 2 treatment indicators, but the main comparisons in this draft focus on lag 0 because that is where the current attenuation narrative is sharpest.
+where $i$ indexes ADM2 regions, $c$ countries, and $t$ years. Standard errors are clustered by leader-period spell. We estimate the specification for lag 0, lag 1, and lag 2 treatment indicators, but the main tables focus on lag 0 because that is where the attenuation pattern is sharpest.
 
 Our later-period environmental outcomes are log nightlights, log NO$_2$, and a pollution-intensity measure defined as $\log(\text{NO}_2 + 0.01) - \log(\text{Nightlights} + 0.01)$. In the PM$_{2.5}$ extension, the analogous pollution-intensity outcome is $\log(\text{PM}_{2.5} + 0.01) - \log(\text{Nightlights} + 0.01)$.
 
@@ -63,11 +63,11 @@ The long DMSP replication remains intact. In the replication-style 1992--2013 sa
 
 The key change is that the first stage collapses in later windows. In 2005--2013, still within the DMSP era, the lag-0 coefficient falls to 0.0017 with $p = 0.768$. In the harmonized 2005--2019 sample, the lag-0 coefficient is 0.0004 with $p = 0.966$. That pattern makes it difficult to argue that the environmental exercise simply inherits a strong replicated favoritism effect from the classic literature.
 
-The existing window-grid diagnostics support that interpretation. Positive coefficients are concentrated in DMSP-only windows with earlier starts and end years around the late 2000s or early 2010s. By contrast, harmonized post-2005 windows remain small and statistically uninformative throughout. The first-stage problem is therefore not just one bad endpoint choice; it is a broader later-period attenuation pattern.
+The window-grid diagnostics support that interpretation. Positive coefficients are concentrated in DMSP-only windows with earlier starts and end years around the late 2000s or early 2010s. By contrast, harmonized post-2005 windows remain small and statistically uninformative throughout. The first-stage problem is therefore not just one bad endpoint choice; it is a broader later-period attenuation pattern.
 
 \subsection*{Additional diagnostics on later-period attenuation}
 
-Preliminary diagnostics narrow the plausible explanations for that attenuation. First, the null is not obviously a pure harmonization artifact. A quick VIIRS-only first-stage check on the standalone 2018--2023 panel is also near zero: the lag-0 coefficient is 0.0038 with $p = 0.722$. Second, the political composition of the sample does not shift enough to make a simple ``later years are much more democratic'' explanation especially convincing. The share of leader-years in the strict-autocracy bin falls only modestly between the long and later windows, while the more visible change is shorter observed spell support: average active years per spell fall from about 5.22 in 1992--2013 to 3.97 in 2005--2013.
+Additional diagnostics narrow the plausible explanations for that attenuation. First, the null is not obviously a pure harmonization artifact. A VIIRS-only first-stage check on the standalone 2018--2023 panel is also near zero: the lag-0 coefficient is 0.0038 with $p = 0.722$. Second, the political composition of the sample does not shift enough to make a simple ``later years are much more democratic'' explanation especially convincing. The share of leader-years in the strict-autocracy bin falls only modestly between the long and later windows, while the more visible change is shorter observed spell support: average active years per spell fall from about 5.22 in 1992--2013 to 3.97 in 2005--2013.
 
 Third, treated districts in the later DMSP years are already much brighter than untreated districts. In 2005--2013, the median treated district has DMSP luminosity around 16.84, compared with 8.83 for untreated districts, and the treated upper tail sits close to the DMSP ceiling. That headroom pattern is consistent with mechanical attenuation in later years if leaders are increasingly born in already-bright districts. Supporting that interpretation, the average ascension-year within-country light rank of birth districts is high in both periods and slightly higher in the later sample. By contrast, treatment geocoding quality is stable across periods, so worsening PLAD birthplace measurement is not the leading explanation.
 
@@ -97,11 +97,11 @@ Window & Coef. & SE & $p$-value & N & Treated obs. & Clusters \\
 
 \section{Searching for Subsamples Where Favoritism Survives}
 
-The midterm feedback suggested that the highest-value extension was not more generic robustness, but a focused search for samples where the original favoritism mechanism should be strongest. We therefore test four families of subsamples: geography, political capacity, measurement headroom, and pollution-support samples. Geography captures the fact that Hodler and Raschky find especially strong effects in Sub-Saharan Africa. Political capacity isolates long-tenure leaders and long-tenure autocrats. The headroom splits ask whether DMSP saturation hides effects in already-bright districts. The pollution-support splits ask whether environmental outcomes are only informative in countries with enough NO$_2$ variation.
+If the pooled post-2005 first stage masks heterogeneity, the most plausible places to look are settings where the original favoritism mechanism should be strongest or easiest to measure. We therefore test four families of subsamples: geography, political capacity, measurement headroom, and pollution-support samples. Geography captures the fact that Hodler and Raschky find especially strong effects in Sub-Saharan Africa. Political capacity isolates long-tenure leaders and long-tenure autocrats. The headroom splits ask whether DMSP saturation hides effects in already-bright districts. The pollution-support splits ask whether environmental outcomes are only informative in countries with enough NO$_2$ variation.
 
 This exercise produces one important historical result but no post-2005 rescue. In the full 1992--2013 DMSP window, the Africa coefficient is 0.0428 ($p = 0.009$) and the Sub-Saharan Africa coefficient is 0.0442 ($p = 0.011$), while the non-SSA coefficient is small and insignificant. This confirms that the long-run replication is concentrated in the geography emphasized by the original literature. But in 2005--2013, the Africa and SSA estimates turn negative and insignificant. The other theory-favored post-2005 samples also fail to revive the first stage: long-tenure autocrats are positive but very imprecise, dropping high-luminosity districts does not help, and the high-NO$_2$ country sample remains near zero.
 
-The harmonized 2005--2019 panel gives the most suggestive but still inconclusive later pattern. Africa (0.0262, $p = 0.167$) and Sub-Saharan Africa (0.0315, $p = 0.135$) are larger than the pooled null, but neither clears the pre-specified credible-first-stage rule of a positive coefficient above 0.005 with $p < 0.10$. We therefore treat pollution estimates in these samples as diagnostic rather than confirmatory.
+The harmonized 2005--2019 panel gives the most suggestive but still inconclusive later pattern. Africa (0.0262, $p = 0.167$) and Sub-Saharan Africa (0.0315, $p = 0.135$) are larger than the pooled null, but neither satisfies the credible-first-stage criterion of a positive coefficient above 0.005 with $p < 0.10$. We therefore treat pollution estimates in these samples as diagnostic rather than confirmatory.
 
 \begin{table*}[t]
 \centering
@@ -128,7 +128,7 @@ Sub-Saharan Africa & Harmonized 2005--2019 & 0.0315 & 0.0210 & 0.135 & 52{,}001 
 Low NO$_2$ dispersion countries & Harmonized 2005--2019 & 0.0219 & 0.0183 & 0.232 & 95{,}961 & 621 & 124 \\
 \bottomrule
 \end{tabular*}
-\addtabletext{All rows use lag-0 treatment, ADM2 fixed effects, country-year fixed effects, and leader-period clustering. Long tenure means total PLAD spell length of at least five years. Long-tenure autocracy additionally requires $v2x\_polyarchy < 0.3$. The credible-first-stage rule used in the notebook is coef. $\geq 0.005$, $p < 0.10$, and at least 50 treated observations in a post-2005 sample. No post-2005 subsample satisfies that rule.}
+\addtabletext{All rows use lag-0 treatment, ADM2 fixed effects, country-year fixed effects, and leader-period clustering. Long tenure means total PLAD spell length of at least five years. Long-tenure autocracy additionally requires $v2x\_polyarchy < 0.3$. The credible-first-stage criterion is coef. $\geq 0.005$, $p < 0.10$, and at least 50 treated observations in a post-2005 sample. No post-2005 subsample satisfies that criterion.}
 \label{tab:subsample-firststage}
 \end{table*}
 
@@ -150,7 +150,7 @@ Africa & 0.0262 & 0.167 & -0.0267 & -0.0267 & 75{,}975 \\
 Low NO$_2$ dispersion & 0.0219 & 0.232 & 0.0156 & -0.0203 & 78{,}624 \\
 \bottomrule
 \end{tabular*}
-\addtabletext{The first-stage columns use the harmonized 2005--2019 nightlights panel. Pollution-intensity outcomes are log pollution minus log nightlights in the same subsample. These are diagnostic follow-through estimates because none of the first stages is statistically credible under the pre-specified rule. The corresponding $p$-values for NO$_2$ intensity are 0.237, 0.295, and 0.685; for PM$_{2.5}$ intensity they are 0.127, 0.178, and 0.281.}
+\addtabletext{The first-stage columns use the harmonized 2005--2019 nightlights panel. Pollution-intensity outcomes are log pollution minus log nightlights in the same subsample. These are diagnostic follow-through estimates because none of the first stages is statistically credible under the stated criterion. The corresponding $p$-values for NO$_2$ intensity are 0.237, 0.295, and 0.685; for PM$_{2.5}$ intensity they are 0.127, 0.178, and 0.281.}
 \label{tab:subsample-pollution}
 \end{table*}
 
@@ -178,7 +178,7 @@ Treated DN upper tail ($p95$) & --- & 61.00 \\
 
 Because the later-period nightlights first stage is weak, the pollution estimates should be read cautiously. They still matter, however, because they do not point toward cleaner birth-region growth even conditional on that limitation. In the pooled 2005--2019 sample, the lag-0 nightlights coefficient is near zero, the lag-0 NO$_2$ coefficient is positive at 0.0308 ($p = 0.045$), and the lag-0 pollution-intensity outcome is also positive at 0.0333 ($p = 0.063$). The immediate implication is not green favoritism but either no detectable favoritism in the later period or slightly dirtier contemporaneous growth in politically favored districts.
 
-The current event-study evidence is also not clean enough to rescue a strong causal environmental claim. In the existing notebook outputs, positive NO$_2$ and pollution-intensity effects emerge several years after ascension, but the pre-period is not flat enough to support a sharp post-treatment interpretation.
+The event-study evidence is also not clean enough to rescue a strong causal environmental claim. Positive NO$_2$ and pollution-intensity effects emerge several years after ascension, but the pre-period is not flat enough to support a sharp post-treatment interpretation.
 
 \begin{table*}[t]
 \centering
@@ -200,7 +200,7 @@ PM$_{2.5}$ pollution intensity & 2005--2019 lag 2 & 0.0175 & 0.0074 & 0.019 & 66
 
 \subsection*{Autocracy and PM$_{2.5}$ extensions}
 
-The current heterogeneity checks do not recover the later first stage either. Restricting the sample to country-years with $v2x\_polyarchy < 0.3$ yields a lag-0 nightlights coefficient of 0.0111 ($p = 0.574$) in the DMSP 1992--2013 sample and 0.0076 ($p = 0.552$) in the DMSP 2005--2013 sample. Those estimates are positive in sign but too imprecise and too small to rescue the main later-period narrative.
+The heterogeneity checks do not recover the later first stage either. Restricting the sample to country-years with $v2x\_polyarchy < 0.3$ yields a lag-0 nightlights coefficient of 0.0111 ($p = 0.574$) in the DMSP 1992--2013 sample and 0.0076 ($p = 0.552$) in the DMSP 2005--2013 sample. Those estimates are positive in sign but too imprecise and too small to rescue the main later-period narrative.
 
 The PM$_{2.5}$ extension reinforces the same interpretation. In longer windows, PM$_{2.5}$ level regressions are positive rather than negative, and in the overlapping 2005--2019 sample the PM$_{2.5}$ pollution-intensity outcome is also not negative. The lag-2 estimate is positive and statistically significant. Taken together, the pollution-side evidence is more consistent with the absence of green favoritism than with a cleaner-growth interpretation.
 
@@ -220,27 +220,27 @@ Window & Coef. & SE & $p$-value \\
 
 \section{Discussion}
 
-The current draft does not support the original green-favoritism hypothesis. In the only window where the pollution analysis is feasible at scale, the nightlights first stage is close to zero and the pollution estimates are zero to positive rather than negative. That result does not mean the regional-favoritism literature fails in general. The long DMSP replication remains visible and consistent with prior work. But it does mean that the later-period environmental extension cannot be interpreted as a simple continuation of the classic result.
+The results do not support the original green-favoritism hypothesis. In the only window where the pollution analysis is feasible at scale, the nightlights first stage is close to zero and the pollution estimates are zero to positive rather than negative. That result does not mean the regional-favoritism literature fails in general. The long DMSP replication remains visible and consistent with prior work. But it does mean that the later-period environmental extension cannot be interpreted as a simple continuation of the classic result.
 
-The main contribution of the final paper is therefore diagnostic rather than confirmatory. The later-period attenuation appears broad enough that it cannot be dismissed as a single endpoint choice, and it is not rescued by the current autocracy-only first-stage check. The targeted subsample search sharpens this point. It confirms that the historical result is geographically concentrated in Africa and Sub-Saharan Africa, but it does not find a credible post-2005 subsample in which favoritism clearly survives. A simple democracy-composition story also looks too weak on its own, and the null persists in a later VIIRS-only check. By contrast, two patterns remain plausible: weaker support from shorter observed leader spells and reduced luminosity headroom because treated districts are already bright and often near the DMSP upper range.
+The paper's main contribution is therefore diagnostic rather than confirmatory. The later-period attenuation appears broad enough that it cannot be dismissed as a single endpoint choice, and it is not rescued by the current autocracy-only first-stage check. The targeted subsample search sharpens this point. It confirms that the historical result is geographically concentrated in Africa and Sub-Saharan Africa, but it does not find a credible post-2005 subsample in which favoritism clearly survives. A simple democracy-composition story also looks too weak on its own, and the null persists in a later VIIRS-only check. By contrast, two patterns remain plausible: weaker support from shorter observed leader spells and reduced luminosity headroom because treated districts are already bright and often near the DMSP upper range.
 
 That framing is also the cleanest way to connect the nightlights and pollution evidence. Rather than claiming cleaner growth in leader birth regions, the current results suggest a later political era in which the quantity-of-growth favoritism result itself is weaker or harder to detect. Once that is true, the absence of cleaner growth is no longer surprising. The strongest later diagnostic samples do show negative pollution-intensity point estimates in Africa and Sub-Saharan Africa, but those estimates sit behind imprecise first stages and therefore cannot carry the original green-favoritism claim.
 
 \section*{Acknowledgments}
 
-Acknowledgments to be finalized. Add course context, feedback, funding, and data-support acknowledgments here if they are needed in the final version.
+We thank seminar participants for helpful comments. All errors are our own.
 
 \section*{Author Contributions}
 
-R.S. conceived the project, built and integrated the main data pipeline, ran the core empirical analysis, and drafted the manuscript. M.M.A. contributed to the NO$_2$ analysis and related project development. R.W. contributed to manuscript feedback and proofreading.
+R.S. conceived the study, built and integrated the main data pipeline, ran the core empirical analysis, and drafted the manuscript. M.M.A. contributed to the NO$_2$ analysis. R.W. contributed to manuscript review and proofreading.
 
 \section*{Competing Interests}
 
-The authors declare no competing interests at this stage. Replace this text if any disclosure is required.
+The authors declare no competing interests.
 
 \section*{Data, Materials, and Code Availability}
 
-Code, notebooks, and manuscript sources for the current draft are available in the public GitHub repository at \url{https://github.com/RichSchulz/political-leader-pollution}. The analysis also relies on PLAD leader data, ADM2 boundary files from GADM, harmonized nightlights inputs, ACAG surface NO$_2$, ACAG SatPM PM$_{2.5}$, and V-Dem country-year data. Redistribution constraints for external datasets continue to follow the rules of the original providers, so the repository documents download and construction steps rather than bundling every upstream input directly.
+Code, notebooks, and manuscript sources are available in the public GitHub repository at \url{https://github.com/RichSchulz/political-leader-pollution}. The analysis also relies on PLAD leader data, ADM2 boundary files from GADM, harmonized nightlights inputs, ACAG surface NO$_2$, ACAG SatPM PM$_{2.5}$, and V-Dem country-year data. Redistribution constraints for external datasets follow the rules of the original providers, so the repository documents download and construction steps rather than bundling every upstream input directly.
 
 \bibliography{references}
 

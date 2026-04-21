@@ -11,6 +11,7 @@
 .DS_Store
 !proposal/main.pdf
 !final report/main.pdf
+final report/review_results/
 data/nightlights/*
 !data/nightlights/.gitkeep
 data/gadm/*.gpkg
