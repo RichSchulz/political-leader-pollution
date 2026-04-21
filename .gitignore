@@ -10,6 +10,7 @@
 *.out
 .DS_Store
 !proposal/main.pdf
+!final report/main.pdf
 data/nightlights/*
 !data/nightlights/.gitkeep
 data/gadm/*.gpkg
