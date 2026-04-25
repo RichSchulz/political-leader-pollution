@@ -10,6 +10,7 @@
 *.out
 .DS_Store
 !proposal/main.pdf
+!presentation/presentation.pdf
 !final report/main.pdf
 final report/review_results/
 data/nightlights/*
