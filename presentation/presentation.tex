@@ -108,8 +108,6 @@
         \item \textbf{Geography}: GADM ADM2 boundaries
     \end{itemize}
 
-    \vspace{0.5em}
-    \textbf{Treatment} (\textit{BirthRegionLeader}$_{ict}$): district $i$ in country $c$ is the birth region of the leader in office in year $t$.
 \end{frame}
 
 % --- Empirical strategy ---
@@ -118,12 +116,16 @@
         \log(Y_{ict} + 0.01) = \beta \cdot \text{BirthRegionLeader}_{ict} + \alpha_i + \gamma_{ct} + \varepsilon_{ict}
     \end{equation*}
 
+    \vspace{0.3em}
+    \footnotesize\textit{BirthRegionLeader}$_{ict} = 1$ if district $i$ in country $c$ is the birth region of the leader in office in year $t$, $0$ otherwise.
+    \normalsize
+
     \vspace{0.5em}
     \begin{itemize}
         \item ADM2 FE $\alpha_i$, country-year FE $\gamma_{ct}$
         \item $\beta$ compares the leader's birth district to other districts in the same country and year
         \item SEs clustered by leader spell
-        \item Outcomes: $\log$ NL, $\log$ NO$_2$, intensity $= \log$ NO$_2 - \log$ NL
+        \item Outcomes: $\log$ NL, intensity $= \log$ NO$_2 - \log$ NL
     \end{itemize}
 \end{frame}
 
