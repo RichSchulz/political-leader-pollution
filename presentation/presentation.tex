@@ -41,18 +41,33 @@
     \titlepage
 \end{frame}
 
-% --- Visual hook ---
+% --- Visual hook 1: the airport ---
 {
 \setbeamercolor{background canvas}{bg=black}
 \setbeamercolor{normal text}{fg=white}
 \setbeamercolor{alerted text}{fg=white}
 \setbeamercolor{frametitle}{bg=black, fg=white}
-\begin{frame}{Hambantota, Sri Lanka at night}
+\begin{frame}{Mattala Rajapaksa International Airport}
+    \centering
+    \includegraphics[width=0.78\linewidth]{mattala_airport.jpg}
+
+    \vspace{0.4em}
+    {\color{white}\footnotesize Built 2013 in rural Hambantota --- President Rajapaksa's home district. \$209M, financed by China. At opening it handled fewer than a dozen flights a week.}
+\end{frame}
+}
+
+% --- Visual hook 2: the nightlights ---
+{
+\setbeamercolor{background canvas}{bg=black}
+\setbeamercolor{normal text}{fg=white}
+\setbeamercolor{alerted text}{fg=white}
+\setbeamercolor{frametitle}{bg=black, fg=white}
+\begin{frame}{And from space}
     \centering
     \includegraphics[width=0.92\linewidth]{hambantota_nightlights.png}
 
     \vspace{0.4em}
-    {\color{white}\footnotesize Rajapaksa took office in 2005. By 2013, his home district had a \$1.5B Chinese-financed port, an international airport named after him, a cricket stadium, and a conference center. Most are barely used.}
+    {\color{white}\footnotesize The airport, a \$1.5B port, a cricket stadium, and a conference center all went up in Rajapaksa's home district. The 2013 nightlights show the new bright spot.}
 \end{frame}
 }
 
@@ -63,50 +78,38 @@
         \item Hodler \& Raschky (\textit{QJE}, 2014) show this globally in satellite nightlights
         \item The effect is largest in Sub-Saharan Africa
     \end{itemize}
-
-    \vspace{1em}
-    \begin{block}{Our question}
-        Does it \textbf{still hold} after 2005?
-    \end{block}
 \end{frame}
 
 % --- This project ---
 \begin{frame}{This project}
     \textbf{Two questions:}
     \begin{enumerate}
-        \item Does the birth-region nightlights effect \textbf{replicate after 2005}?
+        \item Does \textbf{birth-region favoritism} still show up in nightlights after 2005?
         \item If not, did favoritism shift from \emph{more} growth to \emph{cleaner} growth? (``green favoritism'')
     \end{enumerate}
 
     \vspace{1em}
     \textbf{Preview:}
     \begin{itemize}
-        \item Long DMSP (1992--2013): replicates ($\beta = 0.013$, $p = 0.030$)
-        \item Post-2005: estimates collapse, and no subsample brings them back
+        \item 1992--2013: birth-region favoritism is there ($\beta = 0.013$, $p = 0.030$)
+        \item After 2005: the effect disappears in every subsample we tested
         \item Pollution doesn't show cleaner growth either
     \end{itemize}
 \end{frame}
 
 % --- Data ---
-\begin{frame}{Data: a global district-year panel}
-    \begin{columns}[T]
-        \column{0.55\textwidth}
-        \textbf{Inputs}
-        \begin{itemize}
-            \item PLAD: leader birthplaces \& spells
-            \item DMSP + harmonized DMSP--VIIRS nightlights
-            \item ACAG NO$_2$, ACAG PM$_{2.5}$
-            \item V-Dem, GADM ADM2 boundaries
-        \end{itemize}
+\begin{frame}{Data}
+    Global ADM2 district-year panel combining:
+    \begin{itemize}
+        \item \textbf{PLAD}: leader identity, spell timing, subnational birthplace
+        \item \textbf{Nightlights}: DMSP 1992--2013; harmonized DMSP--VIIRS 2005--2019
+        \item \textbf{NO$_2$}: ACAG surface NO$_2$, 2005--2019
+        \item \textbf{PM$_{2.5}$}: ACAG SatPM, 1998--2024
+        \item \textbf{Geography}: GADM ADM2 boundaries
+    \end{itemize}
 
-        \column{0.45\textwidth}
-        \textbf{Sample}
-        \begin{itemize}
-            \item ADM2 district $\times$ year
-            \item Global, up to $\sim$950k obs
-            \item Treated = current leader's birth district
-        \end{itemize}
-    \end{columns}
+    \vspace{0.5em}
+    \textbf{Treatment} (\textit{BirthRegionLeader}$_{ict}$): district $i$ in country $c$ is the birth region of the leader in office in year $t$.
 \end{frame}
 
 % --- Empirical strategy ---
@@ -118,7 +121,7 @@
     \vspace{0.5em}
     \begin{itemize}
         \item ADM2 FE $\alpha_i$, country-year FE $\gamma_{ct}$
-        \item $\beta$ identified by leader transitions within country-year
+        \item $\beta$ compares the leader's birth district to other districts in the same country and year
         \item SEs clustered by leader spell
         \item Outcomes: $\log$ NL, $\log$ NO$_2$, intensity $= \log$ NO$_2 - \log$ NL
     \end{itemize}
@@ -162,7 +165,30 @@
             \item Positive estimates cluster in DMSP windows ending late 2000s
             \item Post-2005 windows: near zero everywhere
         \end{itemize}
+        \vspace{0.6em}
+        \textbf{Not a single bad endpoint --- a period-wide attenuation.}
     \end{columns}
+\end{frame}
+
+% --- Mechanisms (candidate explanations) ---
+\begin{frame}{What could drive the attenuation?}
+\small
+    \textbf{Four plausible stories:}
+    \begin{enumerate}
+        \item \textbf{Democratization} --- institutions check leaders' ability to favor home
+        \item \textbf{Africa-specific} --- effect was largely an SSA story; maybe survives only there
+        \item \textbf{DMSP saturation} --- birth districts too bright to register more growth
+        \item \textbf{Composition shift} --- cleaner growth instead of more (``green favoritism'')
+    \end{enumerate}
+
+    \vspace{0.5em}
+    Each story implies a test:
+    \begin{itemize}
+        \item Democratization $\Rightarrow$ autocrats only \hfill (\textsc{Result 3})
+        \item Africa story $\Rightarrow$ SSA subsample \hfill (\textsc{Result 3})
+        \item Saturation $\Rightarrow$ drop bright districts \hfill (\textsc{Result 3})
+        \item Green favoritism $\Rightarrow$ pollution outcomes \hfill (\textsc{Result 4})
+    \end{itemize}
 \end{frame}
 
 % --- Result 3: subsamples ---
@@ -205,31 +231,21 @@
     \end{tabular}
 
     \vspace{0.8em}
-    \small Estimates go the \textbf{wrong way}. Less precise under country clustering, but never negative.
-\end{frame}
-
-% --- Mechanisms ---
-\begin{frame}{What could drive the attenuation?}
-    \begin{itemize}
-        \item Observed spells are shorter in the later window (5.2 $\to$ 4.0 yrs). Partly a mechanical artifact of window truncation.
-        \item Birth districts are already brighter, closer to DMSP saturation. But dropping bright districts doesn't help.
-        \item Not harmonization: VIIRS-only 2018--2023 is also $\approx 0$
-        \item Not worse PLAD geocoding: quality is stable across periods
-        \item Green favoritism would predict falling pollution. We don't see that.
-    \end{itemize}
-
-    \vspace{0.5em}
-    \begin{block}{Bottom line}
-        The signal is gone, and the easy explanations don't hold.
-    \end{block}
+    \small Estimates go the \textbf{wrong way}.
 \end{frame}
 
 % --- Takeaways ---
 \begin{frame}{Takeaways}
     \begin{enumerate}
-        \item The long DMSP result \textbf{still replicates}
-        \item After 2005 the effect collapses, even where theory says it should be strongest
-        \item Pollution outcomes are zero-to-positive, so it isn't green favoritism
+        \item The 1992--2013 result \textbf{still replicates}
+        \item After 2005 the effect collapses --- and it doesn't come back when we slice the data
+        \item None of the four stories holds up:
+            \begin{itemize}
+                \item Even autocrats don't show it $\Rightarrow$ not democratization
+                \item Even Africa doesn't show it post-2005 $\Rightarrow$ not just an Africa story
+                \item Even dim districts don't show it $\Rightarrow$ not saturation
+                \item Pollution isn't lower in birth regions $\Rightarrow$ not green favoritism
+            \end{itemize}
         \item A textbook political-economy result looks much weaker once you push it past 2005
     \end{enumerate}
 
