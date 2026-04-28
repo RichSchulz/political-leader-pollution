@@ -82,18 +82,17 @@
 
 % --- This project ---
 \begin{frame}{This project}
-    \textbf{Two questions:}
+    \textbf{Research questions:}
     \begin{enumerate}
         \item Does \textbf{birth-region favoritism} still show up in nightlights after 2005?
         \item If not, did favoritism shift from \emph{more} growth to \emph{cleaner} growth? (``green favoritism'')
     \end{enumerate}
 
-    \vspace{1em}
-    \textbf{Preview:}
+    \vspace{0.6em}
+    \textbf{Our contribution / preview of results:}
     \begin{itemize}
-        \item 1992--2013: birth-region favoritism is there ($\beta = 0.013$, $p = 0.030$)
-        \item After 2005: the effect disappears in every subsample we tested
-        \item Pollution doesn't show cleaner growth either
+        \item \textbf{First systematic post-2005 test} of the Hodler--Raschky setup: effect replicates in 1992--2013 ($\beta = 0.013$, $p = 0.030$), but disappears after 2005 in every subsample we tested
+        \item \textbf{Introduce \emph{green favoritism}} as a novel composition-shift hypothesis --- and rule it out with satellite NO$_2$ and PM$_{2.5}$
     \end{itemize}
 \end{frame}
 
@@ -111,7 +110,7 @@
 \end{frame}
 
 % --- Empirical strategy ---
-\begin{frame}{Empirical strategy}
+\begin{frame}{Empirical strategy: two-way fixed-effects DiD}
     \begin{equation*}
         \log(Y_{ict} + 0.01) = \beta \cdot \text{BirthRegionLeader}_{ict} + \alpha_i + \gamma_{ct} + \varepsilon_{ict}
     \end{equation*}
