@@ -31,3 +31,5 @@ data/pm25/
 data/pm25_adm2_acag_panel.parquet
 data/gadm/gadm41_adm2_shp/
 .tmp_pm25/
+data/tmp_viirs_v21_parts/
+data/nightlights_adm2_viirs_v21_2012_2024_panel.parquet
