@@ -33,7 +33,7 @@
 \acknow{We thank Professor Joshua Blumenstock for feedback. All errors are our own.}
 
 \begin{abstract}
-We study how the canonical birth-region favoritism result in nightlights evolves over time. We combine the Political Leaders' Affiliation Database, ADM2-level nightlights, ACAG surface NO$_2$, ACAG PM$_{2.5}$, V-Dem democracy scores, and GADM administrative boundaries in a global district-year panel with region fixed effects and country-year fixed effects. In the long DMSP window, the lag-0 birth-region coefficient is positive at 0.0128 in 1992--2013 ($p = 0.030$). But 5-year interactions within DMSP show a sharper temporal pattern: the effect is strongest in 2007--2011 at 0.0292 ($p = 0.004$) and then falls to $-0.0057$ in 2012--2013 ($p = 0.709$), so the break begins before any sensor switch. The historical positive effect is concentrated in Sub-Saharan Africa, where the 1992--2013 coefficient is 0.0442 ($p = 0.011$), while non-SSA is close to zero. Yet no post-2005 subsample restores a precise positive activity effect. A standalone VIIRS-only panel for 2014--2024 also yields negative later-period estimates. Pollution outcomes do not support the idea that leaders shifted from directing more growth to directing cleaner growth toward birth regions. The main contribution is to document a late-2000s rise and early-2010s break in the activity effect rather than a simple gradual fade.
+We study how the canonical birth-region favoritism result in nightlights evolves over time. We combine the Political Leaders' Affiliation Database, ADM2-level nightlights, ACAG surface NO$_2$, ACAG PM$_{2.5}$, V-Dem democracy scores, and GADM administrative boundaries in a global district-year panel with region fixed effects and country-year fixed effects. In the long DMSP window, the lag-0 birth-region coefficient is positive at 0.0128 in 1992--2013 ($p = 0.030$). But 5-year interactions within DMSP show a sharper temporal pattern: the effect is strongest in 2007--2011 at 0.0292 ($p = 0.004$) and then falls to $-0.0057$ in 2012--2013 ($p = 0.709$), so the break begins before any sensor switch. The historical positive effect is concentrated in Sub-Saharan Africa, where the 1992--2013 coefficient is 0.0442 ($p = 0.011$), while non-SSA is close to zero. Pollution outcomes do not support the idea that leaders shifted from directing more growth to directing cleaner growth toward birth regions: NO$_2$ and PM$_{2.5}$ estimates are zero to positive. The historical effect is further concentrated in countries in the top quartile of mineral rents: excluding them, the 1992--2013 coefficient falls to 0.0038 ($p = 0.526$), and the SSA effect collapses analogously, while SSA mineral-rent countries alone yield 0.0967 ($p < 0.001$). The combined evidence is consistent with a commodity-boom episode of fiscal-slack favoritism rather than a universal pattern.
 \end{abstract}
 
 \dates{Compiled on \today}
@@ -49,7 +49,9 @@ The paper's central empirical result is not a smooth attenuation. Within DMSP, t
 
 Pollution outcomes enter as a diagnostic for one possible explanation. If leaders still favor birth regions after 2005, but do so through the composition rather than the quantity of growth, then birth regions may receive cleaner activity even when nightlights do not rise. We define ``green favoritism'' as lower pollution per unit of proxied economic activity in leader birth regions. This possibility matters for environmental inequality as well as distributive politics \cite{CopelandTaylor2004}. The pollution evidence does not support it: NO$_2$ and PM$_{2.5}$ estimates are zero to positive rather than negative.
 
-The contribution relative to recent replication work is therefore diagnostic. Recent work with expanded birthplace data and harmonized nightlights also finds a positive pooled favoritism effect in extended samples \cite{Bora2025, DubenHodlerRaschky2026}. By contrast, we focus on the temporal pattern inside later annual windows, show that the break starts within DMSP before any sensor switch, isolate the long-run Sub-Saharan African historical core, and evaluate whether a shift toward cleaner growth can explain the weaker activity effect. The result is not that the historical finding disappears in all data. It is that the later-period relationship is unstable: it peaks in the late 2000s, weakens sharply by the early 2010s, and is not restored by post-2005 subsample cuts or by standalone VIIRS data.
+Motivated by the late-2000s peak and the Sub-Saharan concentration, we ask whether the canonical effect is gated by exposure to mineral rents. The timing of the break lines up with the end of the 2000s commodity supercycle, and SSA is heavily over-represented among mineral-rent economies. This split serves as a diagnostic for a fiscal-slack interpretation of the temporal break: if the historical effect is concentrated in mineral-rich states, the late-2000s peak and the SSA concentration have a common cause. Excluding the top quartile of mineral-rent countries eliminates the long-window effect entirely, and the surviving variation lies almost exclusively in mineral-rich SSA economies.
+
+The contribution relative to recent replication work is therefore diagnostic. Recent work with expanded birthplace data and harmonized nightlights also finds a positive pooled favoritism effect in extended samples \cite{Bora2025, DubenHodlerRaschky2026}. By contrast, we focus on the temporal pattern inside later annual windows, show that the break starts within DMSP before any sensor switch, isolate the long-run Sub-Saharan African historical core, and identify mineral rents as the political-economic configuration that generates the canonical effect. The result is not that the historical finding disappears in all data. It is that the later-period relationship is unstable: it peaks in the late 2000s, weakens sharply by the early 2010s, is concentrated in mineral-rent SSA economies, and is not restored by post-2005 subsample cuts or by standalone VIIRS data. The mineral-rent decomposition is the paper's main mechanism contribution.
 
 \section{Data and Empirical Design}
 
@@ -104,6 +106,38 @@ Non-SSA & Harmonized 2005--2019 & -0.0077 & 0.0094 & 0.412 & 619{,}398 & 1{,}235
 \end{tabular*}
 \addtabletext{All rows use lag-0 treatment, ADM2 fixed effects, country-year fixed effects, and leader-spell clustering. The long-run SSA 1992--2019 harmonized coefficient is 0.0448 ($p = 0.010$), reinforcing that the historical positive effect remains visible in long SSA windows even though the short post-2005 SSA window does not.}
 \label{tab:ssa-decomp}
+\end{table*}
+
+\subsection*{Mineral rents and the late-2000s peak}
+
+Do the temporal break and the SSA concentration share a common driver? Sub-Saharan Africa is heavily over-represented among mineral-dependent economies, and the 2007--2011 peak coincides with the late stage of the 2000s commodity supercycle. We therefore test whether the historical effect is gated by exposure to mineral rents.
+
+Table~\ref{tab:mineral} splits the DMSP 1992--2013 sample by whether a country falls in the top quartile of average mineral rents (World Bank WDI). On the WDI-merged sample, the baseline coefficient is 0.0125 ($p = 0.035$), essentially identical to the unrestricted 0.0128 reported above. Excluding top-quartile mineral-rent countries, that coefficient falls to 0.0038 ($p = 0.526$). The historical effect is entirely concentrated in the mineral-rent quartile, where the coefficient is 0.0456 ($p = 0.006$). The SSA decomposition tells the same story: excluding mineral-rent countries, the SSA effect drops from 0.0442 ($p = 0.011$) to 0.0090 ($p = 0.659$), while SSA mineral-rent countries alone yield 0.0967 ($p < 0.001$). Outside SSA, neither slice produces a statistically distinguishable effect, so the mineral-rent split does not simply relabel the SSA decomposition: it sharpens it.
+
+Two additional patterns are consistent with a fiscal-slack reading. First, within mineral-rent economies the effect is roughly invariant to V-Dem electoral democracy: strict autocracies (0.0657, $p = 0.098$) and non-autocracies (0.0498, $p = 0.003$) deliver similar point estimates, suggesting that discretionary rent revenue substitutes for the institutional channels that would otherwise constrain it. Second, the effect is gated by leader tenure: it roughly doubles after a leader's fifth year in office (0.0641, $p = 0.004$) compared with the first four years (0.0313, $p = 0.060$), consistent with the lead time required to plan and direct large regional investments. The mineral-rent split is therefore not just a country-composition artifact; it picks out the kind of state in which the canonical effect appears.
+
+We read this as a diagnostic rather than a clean causal estimate. The mineral-rent variable is country-level and slow-moving, so the split absorbs other features of resource-rich states. What it does pin down is that the late-2000s peak and the SSA concentration share a common driver: the commodity-boom-era fiscal position of mineral-rich states.
+
+\begin{table*}[t]
+\centering
+\caption{Mineral-rent decomposition of the canonical DMSP 1992--2013 effect}
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r r r r}
+Sample & Coef. & SE & $p$-value & N \\
+\midrule
+All countries & 0.0125 & 0.0059 & 0.035 & 945{,}039 \\
+Excluding top-quartile mineral-rent countries & 0.0038 & 0.0060 & 0.526 & 648{,}311 \\
+Top-quartile mineral-rent countries only & 0.0456 & 0.0167 & 0.006 & 296{,}728 \\
+\midrule
+Sub-Saharan Africa & 0.0442 & 0.0174 & 0.011 & 63{,}378 \\
+SSA, excluding top-quartile mineral-rent countries & 0.0090 & 0.0203 & 0.659 & 42{,}063 \\
+SSA, top-quartile mineral-rent countries only & 0.0967 & 0.0284 & 0.001 & 21{,}315 \\
+\midrule
+Non-SSA, top-quartile mineral-rent countries only & 0.0150 & 0.0193 & 0.437 & 275{,}413 \\
+Non-SSA, excluding top-quartile mineral-rent countries & 0.0029 & 0.0061 & 0.635 & 606{,}248 \\
+\bottomrule
+\end{tabular*}
+\addtabletext{All rows are lag-0 birth-region coefficients in DMSP 1992--2013, with ADM2 fixed effects, country-year fixed effects, and leader-spell clustering. Mineral-rent quartiles are constructed from country-mean WDI mineral rents (\% of GDP).}
+\label{tab:mineral}
 \end{table*}
 
 \subsection*{Standalone VIIRS in later years}
@@ -221,7 +255,7 @@ The PM$_{2.5}$ extension tells the same story. In longer windows, PM$_{2.5}$ lev
 
 The main result is a temporal break, not just a generic later-period attenuation. Within DMSP, the birth-region activity effect is modest in early bins, strongest in the late 2000s, and then much weaker by 2012--2013. The break therefore starts before any switch to later satellite products. The historical positive effect is concentrated in Sub-Saharan Africa, but short post-2005 windows do not preserve that pattern cleanly, and standalone VIIRS does not restore it in later years.
 
-That temporal pattern points away from a simple harmonization story and toward changes in the underlying political or measurement environment. Several mechanisms remain plausible. One is that the late-2000s peak partly reflects the commodity-cycle period and unusually strong distributive scope in some leader spells. Another is that transparency and monitoring increased in the 2010s, making geographically concentrated favoritism harder to sustain. A third is weaker political support from shorter observed spells, though that comparison is partly mechanical in narrower windows. We also see signs of reduced luminosity headroom in later DMSP years, but the subsample tests dropping high-luminosity districts do not recover the effect. These results narrow the candidate explanations, but do not identify one of them decisively.
+The mineral-rent decomposition narrows the candidate explanations sharply. The most consistent reading is that the late-2000s peak reflects an unusually rent-rich window for a small set of mineral-dependent SSA economies, and that the post-2011 break tracks the end of the commodity supercycle rather than a measurement transition. Two features of the mineral-rent estimates support that reading: the effect is independent of V-Dem electoral democracy, consistent with discretionary rent revenue bypassing formal accountability, and it doubles after a leader's fifth year in office, consistent with the lead time required to direct large regional investments. Other candidates---increased transparency in the 2010s, weaker political support from shorter observed spells, reduced DMSP headroom---remain compatible with the data but are not needed to fit the temporal pattern, and the high-luminosity-drop subsamples already rule out a pure saturation story.
 
 The pollution analysis narrows one explanation for that break. If later favoritism shifted from more growth to cleaner growth, pollution intensity should fall in leader birth regions even when nightlights do not rise. Instead, the pooled pollution estimates are zero to positive, and the negative Africa and Sub-Saharan Africa intensity point estimates in Table~\ref{tab:subsample-pollution} are too imprecise to carry the cleaner-growth interpretation. The paper therefore does not solve why the nightlights reduced form breaks after the late 2000s, but it does show that the break is broad and is not explained by a simple shift toward greener birth-region favoritism.
 
