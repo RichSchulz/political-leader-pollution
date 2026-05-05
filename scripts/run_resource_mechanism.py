@@ -14,7 +14,7 @@ warnings.filterwarnings("ignore")
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 
-PLAD_PATH = DATA / "political leaders" / "PLAD_April_2024.dta"
+PLAD_PATH = DATA / "political leaders" / "PLAD_April_2024_gadm41.parquet"
 DMSP_NTL_CACHE = DATA / "nightlights_adm2_panel.parquet"
 WDI_PATH = DATA / "wdi_resource_rents.csv"
 
@@ -34,7 +34,7 @@ def load_ntl() -> pd.DataFrame:
     return ntl
 
 def load_plad() -> tuple[pd.DataFrame, str]:
-    plad = pd.read_stata(PLAD_PATH)
+    plad = pd.read_parquet(PLAD_PATH)
     plad = plad[plad["foreign_leader"] == "0"].copy()
     birth_gid = "gid_2" if "gid_2" in plad.columns else "gid_1"
     plad = plad.loc[valid_gid_mask(plad[birth_gid])].copy()

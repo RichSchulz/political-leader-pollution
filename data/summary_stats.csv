@@ -1,0 +1,5 @@
+Variable,Mean,SD,Min,Max,N
+Log nightlights (harmonized),0.508,2.351,-4.605,4.143,622868
+NO$_2$ (ppb),0.972,2.079,0.0,126.826,585141
+PM$_{2.5}$ ($\mu$g/m$^3$),18.051,11.472,1.034,127.487,620805
+Birth-region indicator,0.003,0.057,0.0,1.0,622868

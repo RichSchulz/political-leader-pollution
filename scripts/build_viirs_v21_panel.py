@@ -74,7 +74,7 @@ def ensure_inputs(start_year: int, end_year: int) -> None:
 def build_year(task: tuple[int, Path]) -> str:
     year, part_path = task
     adm2 = load_adm2()
-    stats = zonal_stats(adm2.geometry, str(raster_path(year)), stats=["mean"], nodata=0)
+    stats = zonal_stats(adm2.geometry, str(raster_path(year)), stats=["mean"])
     out = adm2[["GID_0", "GID_1", "GID_2"]].copy()
     out["year"] = year
     out["ntl_mean"] = [row["mean"] for row in stats]

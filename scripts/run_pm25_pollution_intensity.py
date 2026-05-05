@@ -29,7 +29,7 @@ warnings.filterwarnings("ignore")
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
-PLAD_PATH = DATA / "political leaders" / "PLAD_April_2024.dta"
+PLAD_PATH = DATA / "political leaders" / "PLAD_April_2024_gadm41.parquet"
 NTL_CACHE = DATA / "nightlights_adm2_green_favoritism_panel.parquet"
 PM25_PANEL_CACHE = DATA / "pm25_adm2_acag_panel.parquet"
 OUT_PATH = DATA / "pm25_pollution_intensity_results.csv"
@@ -58,7 +58,7 @@ def load_panels() -> tuple[pd.DataFrame, pd.DataFrame]:
 def build_treatment() -> tuple[pd.DataFrame, pd.DataFrame]:
     assert PLAD_PATH.exists(), f"PLAD data not found at {PLAD_PATH}"
 
-    plad = pd.read_stata(PLAD_PATH)
+    plad = pd.read_parquet(PLAD_PATH)
     plad = plad[plad["foreign_leader"] == "0"].copy()
 
     birth_gid = "gid_2" if "gid_2" in plad.columns else "gid_1"
